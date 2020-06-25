@@ -24,9 +24,12 @@ sce <- sce[, sce$sample_name == "151673"]
 # create object containing raw data only
 sce <- SingleCellExperiment(
   rowData = rowData(sce)[, 1:8], 
-  colData = colData(sce)[, c(1:7, 9:18)], 
+  colData = colData(sce)[, c(1:7, 9:19, 50:53)], 
   assays = list(counts = assays(sce)[["counts"]])
 )
+
+# rename column of ground truth layer labels
+colData(sce)$ground_truth <- colData(sce)$layer_guess_reordered
 
 
 ## Convert the `SingleCellExperiment` object to a `SpatialExperiment`.
@@ -45,5 +48,7 @@ colData(spe)$x_coord <- colData(spe)[, "imagecol"]
 colData(spe)$y_coord <- -colData(spe)[, "imagerow"]
 
 spe
+
+save(spe, file = "~/Dropbox/STdata/human_DLPFC_151673.RData")
 
 

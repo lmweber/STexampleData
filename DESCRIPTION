@@ -1,0 +1,18 @@
+Package: STdata
+Version: 0.0.1
+Title: Collection of spatial transcriptomics datasets
+Description: Collection of spatial transcriptomics datasets for examples, demonstrations, teaching
+Authors@R: person("Lukas M.", "Weber", email = "lukas.weber.edu@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3282-1730"))
+URL: https://github.com/lmweber/spaTraData
+BugReports: https://github.com/lmweber/spaTraData/issues
+License: MIT + file LICENSE
+biocViews:
+    SingleCell
+Depends: R (>= 4.0.0)
+Imports:
+    SingleCellExperiment, 
+    utils
+VignetteBuilder: knitr
+Suggests:
+    BiocStyle
+RoxygenNote: 7.1.0

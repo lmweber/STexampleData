@@ -14,14 +14,14 @@ load_data(dataset_name, path = "tmp", delete = TRUE)
 \item{delete}{Whether to delete temporary files. Default = TRUE.}
 }
 \value{
-SingleCellExperiment or SpatialExperiment object
+SingleCellExperiment object
 }
 \description{
-Temporary function to load data objects from Dropbox
+Function to load data objects from STdata package
 }
 \details{
-Temporary function to load data objects from Dropbox until ExperimentHub
-package is set up
+Temporary function to load data objects via Dropbox links (until package is
+set up on Bioconductor's ExperimentHub).
 }
 \examples{
 #spe <- load_data("human_DLPFC")

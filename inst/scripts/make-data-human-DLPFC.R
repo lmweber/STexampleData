@@ -1,54 +1,54 @@
+########################################################
 # Script to create human DLPFC data object from raw data
+########################################################
 
-# TO DO: update to start from raw data
-# for now: using spatialLIBD package as source
+# ----------------------
+# Download and load data
+# ----------------------
 
+# load data from spatialLIBD Bioconductor package
 
-## Load data
+# note: full dataset contains 12 samples; here we use sample 151673 only
 
-## Load the dataset from the
-## [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) Bioconductor
-## package. Note that we use only one sample (sample 151673) for these examples.
+# to do: replace to load from raw data links instead (see
+# https://github.com/LieberInstitute/HumanPilot)
 
-## note this downloads the full dataset (12 samples) from spatialLIBD
+# to do: use SpatialExperiment instead of SingleCellExperiment
 
 library(ExperimentHub)
 library(spatialLIBD)
 
 ehub <- ExperimentHub()
 
-# load full dataset
+# download and load full dataset (12 samples)
 sce <- fetch_data(type = "sce", eh = ehub)
-# subset sample 151673
-sce <- sce[, sce$sample_name == "151673"]
-# create object containing raw data only
-sce <- SingleCellExperiment(
-  rowData = rowData(sce)[, 1:8], 
-  colData = colData(sce)[, c(1:7, 9:19, 50:53)], 
-  assays = list(counts = assays(sce)[["counts"]])
+
+# subset to keep sample 151673 only
+sce_sub <- sce[, sce$sample_name == "151673"]
+
+
+# ------------------
+# Create data object
+# ------------------
+
+# create SingleCellExperiment object containing raw counts only
+spe <- SingleCellExperiment(
+  assays = list(counts = counts(sce_sub)), 
+  rowData = rowData(sce_sub)[, 2:7], 
+  colData = colData(sce_sub)[, c(1, 4:7, 19)]
 )
 
-# rename column of ground truth layer labels
-colData(sce)$ground_truth <- colData(sce)$layer_guess_reordered
+# add column of ground truth layer labels
+colData(spe)$ground_truth <- colData(sce_sub)$layer_guess_reordered
 
-
-## Convert the `SingleCellExperiment` object to a `SpatialExperiment`.
-
-#library(SpatialExperiment)
-
-## TO DO: either convert from SCE to SPE, or construct SPE directly from raw
-## Visium data; possibly using raw data links from
-## https://github.com/LieberInstitute/HumanPilot
-
-# for now: use SCE object instead
-spe <- sce
-
-# for now: keep x and y spatial coordinates in colData
+# convert x and y coordinates and store in colData
 colData(spe)$x_coord <- colData(spe)[, "imagecol"]
 colData(spe)$y_coord <- -colData(spe)[, "imagerow"]
 
-spe
 
-save(spe, file = "~/Dropbox/STdata/human_DLPFC_151673.RData")
+# ----------------
+# Save data object
+# ----------------
 
+save(spe, file = "~/Dropbox/STdata/human_DLPFC.RData")
 

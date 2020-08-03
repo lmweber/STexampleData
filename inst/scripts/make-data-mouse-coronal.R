@@ -61,6 +61,10 @@ rownames(coords) <- coords$barcode
 dim(coords)
 
 
+# ------------------
+# Create data object
+# ------------------
+
 # set up SingleCellExperiment
 
 # to do: use sparse matrix format
@@ -91,9 +95,9 @@ spe <- SingleCellExperiment(
 unlink("tmp", recursive = TRUE)
 
 
-# -----------
-# Save object
-# -----------
+# ----------------
+# Save data object
+# ----------------
 
 # to do: store on ExperimentHub
 

@@ -48,7 +48,7 @@ Also note that the formatted data objects are currently downloaded from Dropbox 
 
 Load data object.
 
-```{r load_human_DLPFC}
+```{r load_human_DLPFC, message=FALSE}
 library(STdata)
 library(SingleCellExperiment)
 
@@ -66,7 +66,7 @@ Plot spots in x-y space. Ground truth layer labels are available for this datase
 
 To do: update plotting function to handle NAs in ground truth labels.
 
-```{r plot_human_DLPFC, fig.width=5, fig.height=5}
+```{r plot_human_DLPFC, message=FALSE, fig.width=5, fig.height=5}
 library(spatzli)
 library(ggplot2)
 

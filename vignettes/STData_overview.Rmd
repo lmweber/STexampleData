@@ -1,0 +1,114 @@
+---
+title: "STdata package overview"
+author: 
+  - name: Lukas M. Weber
+    affiliation: 
+      - &id1 "Johns Hopkins Bloomberg School of Public Health"
+  - name: Stephanie C. Hicks
+    affiliation: 
+      - *id1
+package: STdata
+output: 
+  BiocStyle::html_document
+vignette: >
+  %\VignetteIndexEntry{STdata package overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Introduction
+
+The `STdata` package contains a collection of spatial transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
+
+
+## Datasets
+
+Currently, the package contains two datasets:
+
+- `human_DLPFC`: a single sample (sample 151673) from our previously published dataset consisting of 12 samples from the human dorsolateral prefrontal cortex (DLPFC) from 3 neurotypical donors, measured with the 10x Genomics Visium platform. The original dataset is available via the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) package, and is described in our preprint [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1).
+
+- `mouse_coronal`: a single coronal section from the mouse brain, spanning a full hemisphere, which has been provided publicly by 10x Genomics via their [website](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain).
+
+
+# Load data
+
+The following examples show how to load the data objects for each dataset.
+
+Note that the datasets are currently provided as `SingleCellExperiment` objects. This will be updated to the [SpatialExperiment](https://github.com/drighelli/SpatialExperiment) object structure in the future. The main advantage of changing to `SpatialExperiment`s will be the availability of accessor functions for x and y coordinates (which are currently accessed from `colData` instead).
+
+Also note that the formatted data objects are currently downloaded from Dropbox via links embedded in the `load_data` function. This will be updated to use Bioconductor's ExperimentHub once the object structures are finalized. Scripts to create the `SingleCellExperiment` object for each dataset are included in the `inst/scripts` directory in the source code of the `STdata` package.
+
+
+## Human DLPFC
+
+Load data object.
+
+```{r load_human_DLPFC}
+library(STdata)
+library(SingleCellExperiment)
+
+# load object
+spe <- load_data("human_DLPFC")
+spe
+
+# inspect object
+names(assays(spe))
+head(rowData(spe), 3)
+head(colData(spe), 3)
+```
+
+Plot spots in x-y space. Ground truth layer labels are available for this dataset, so we show these as cluster labels.
+
+To do: update plotting function to handle NAs in ground truth labels.
+
+```{r plot_human_DLPFC, fig.width=5, fig.height=5}
+library(spatzli)
+
+plotClustersSpots(
+  spe, 
+  x_coord = "x_coord", 
+  y_coord = "y_coord", 
+  cluster_id = "ground_truth"
+)
+```
+
+
+## Mouse coronal
+
+```{r load_mouse_coronal}
+# load object
+spe <- load_data("mouse_coronal")
+spe
+
+# inspect object
+names(assays(spe))
+head(rowData(spe), 3)
+head(colData(spe), 3)
+```
+
+Plot spots in x-y space. This dataset does not contain any ground truth labels, so here we simply show the spots in x-y space.
+
+To do: update plotting function to allow objects that do not contain any cluster IDs.
+
+```{r plot_mouse_coronal, fig.width=5, fig.height=5}
+# add cluster IDs (to do: remove this)
+colData(spe)$cluster_id <- factor(1)
+
+p <- plotClustersSpots(
+  spe, 
+  x_coord = "x_coord", 
+  y_coord = "y_coord", 
+  cluster_id = "cluster_id", 
+  palette = "black"
+)
+
+# remove legend (to do: remove this)
+library(ggplot2)
+p + theme(legend.position = "none")
+```
+

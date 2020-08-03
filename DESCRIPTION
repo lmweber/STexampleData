@@ -14,5 +14,8 @@ Imports:
     utils
 VignetteBuilder: knitr
 Suggests:
-    BiocStyle
+    BiocStyle, 
+    knitr, 
+    spatzli, 
+    ggplot2
 RoxygenNote: 7.1.1

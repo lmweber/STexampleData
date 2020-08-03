@@ -1,6 +1,8 @@
-# spatialExampleData
+# STdata
 
-Example spatial transcriptomics datasets (Visium and/or other technologies) stored in Bioconductor object formats (`SingleCellExperiment` and/or `spatialExperiment`).
+Collection of spatial transcriptomics datasets for use in OSTA and other examples, demonstrations, and teaching.
 
-For use in OSTA and other demonstrations/examples/teaching.
+Datasets are stored in Bioconductor object formats (`SingleCellExperiment` or `SpatialExperiment`).
+
+Work in progress.
 

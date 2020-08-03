@@ -56,9 +56,13 @@ tissue_positions_path <- file.path(spatial_dir, "tissue_positions_list.csv")
 tissue_positions <- read.csv(tissue_positions_path, header = FALSE)
 
 coords <- tissue_positions[, c("V1", "V5", "V6")]
-colnames(coords) <- c("barcode", "x_coord", "y_coord")
+colnames(coords) <- c("barcode", "x_original", "y_original")
 rownames(coords) <- coords$barcode
 dim(coords)
+
+# flip x and y coordinates to match published images
+coords$x_coord <- coords$y_original
+coords$y_coord <- -coords$x_original
 
 
 # ------------------

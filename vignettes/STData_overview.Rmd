@@ -68,13 +68,16 @@ To do: update plotting function to handle NAs in ground truth labels.
 
 ```{r plot_human_DLPFC, fig.width=5, fig.height=5}
 library(spatzli)
+library(ggplot2)
 
-plotClustersSpots(
+p <- plotClustersSpots(
   spe, 
   x_coord = "x_coord", 
   y_coord = "y_coord", 
   cluster_id = "ground_truth"
 )
+
+p + ggtitle("Spots in x-y coordinates")
 ```
 
 
@@ -108,7 +111,8 @@ p <- plotClustersSpots(
 )
 
 # remove legend (to do: remove this)
-library(ggplot2)
-p + theme(legend.position = "none")
+p + 
+  theme(legend.position = "none") + 
+  ggtitle("Spots in x-y coordinates")
 ```
 

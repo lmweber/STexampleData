@@ -4,15 +4,14 @@
 \alias{load_data}
 \title{Load data}
 \usage{
-load_data(data_name, path = ".", delete = TRUE)
+load_data(dataset_name, path = "tmp", delete = TRUE)
 }
 \arguments{
-\item{data_name}{Name of dataset. Currently accepts "human_DLPFC".}
+\item{dataset_name}{Name of dataset. Either "human_DLPFC" or "mouse_coronal".}
 
-\item{path}{Directory to save temporary file. Default = current working
-directory.}
+\item{path}{Directory to save temporary files. Default = "tmp".}
 
-\item{delete}{Whether to delete temporary file. Default = TRUE.}
+\item{delete}{Whether to delete temporary files. Default = TRUE.}
 }
 \value{
 SingleCellExperiment or SpatialExperiment object
@@ -21,10 +20,11 @@ SingleCellExperiment or SpatialExperiment object
 Temporary function to load data objects from Dropbox
 }
 \details{
-Temporary function to load data objects from Dropbox before ExperimentHub
+Temporary function to load data objects from Dropbox until ExperimentHub
 package is set up
 }
 \examples{
-spe <- load_data("human_DLPFC")
+#spe <- load_data("human_DLPFC")
+#spe <- load_data("mouse_coronal")
 
 }

@@ -95,7 +95,7 @@ Plot spots in x-y space. This dataset does not contain any ground truth labels, 
 
 To do: update plotting function to allow objects that do not contain any cluster IDs.
 
-```{r plot_mouse_coronal, fig.width=5, fig.height=5}
+```{r plot_mouse_coronal, fig.width=4, fig.height=4}
 # add cluster IDs (to do: remove this)
 colData(spe)$cluster_id <- factor(1)
 

@@ -1,5 +1,8 @@
 # STdata
 
+[![R build status](https://github.com/lmweber/STdata/workflows/R-CMD-check/badge.svg)](https://github.com/lmweber/STdata/actions)
+
+
 Collection of spatial transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
 
 Datasets are currently stored as `SingleCellExperiment` objects.

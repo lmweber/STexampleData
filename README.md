@@ -15,6 +15,6 @@ To view the vignette while the package is on GitHub, install the package with th
 ```
 devtools::install_github("lmweber/STdata", build_vignettes = TRUE, force = TRUE)
 
-vignette("STData_overview", package = "STdata")
+vignette("STdata_overview", package = "STdata")
 ```
 

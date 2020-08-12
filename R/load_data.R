@@ -6,7 +6,8 @@
 #' set up on Bioconductor's ExperimentHub).
 #'
 #'
-#' @param dataset_name Name of dataset. Either "human_DLPFC" or "mouse_coronal".
+#' @param dataset_name Name of dataset. Currently accepts either "human_DLPFC"
+#'   or "mouse_coronal".
 #' 
 #' @param path Directory to save temporary files. Default = "tmp".
 #' 

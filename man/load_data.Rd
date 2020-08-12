@@ -7,7 +7,8 @@
 load_data(dataset_name, path = "tmp", delete = TRUE)
 }
 \arguments{
-\item{dataset_name}{Name of dataset. Either "human_DLPFC" or "mouse_coronal".}
+\item{dataset_name}{Name of dataset. Currently accepts either "human_DLPFC"
+or "mouse_coronal".}
 
 \item{path}{Directory to save temporary files. Default = "tmp".}
 

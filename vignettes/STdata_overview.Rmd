@@ -30,16 +30,16 @@ The `STdata` package contains a collection of spatial transcriptomics datasets s
 
 Currently, the package contains two datasets:
 
-- `human_DLPFC`: a single sample (sample 151673) from our previously published dataset consisting of 12 samples from the human dorsolateral prefrontal cortex (DLPFC) from 3 neurotypical donors, measured with the 10x Genomics Visium platform. The original dataset is available via the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) package, and is described in our preprint [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1).
+- `human_DLPFC`: a single sample (sample 151673) from our previously published dataset consisting of 12 samples from the human dorsolateral prefrontal cortex (DLPFC) in the human brain, from 3 neurotypical donors, measured with the 10x Genomics Visium platform. The original dataset is available via the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) package, and is described in our preprint [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1).
 
-- `mouse_coronal`: a single coronal section from the mouse brain, spanning a full hemisphere, which has been provided publicly by 10x Genomics via their [website](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain).
+- `mouse_coronal`: a single coronal section from the mouse brain, spanning one hemisphere, which has been provided publicly by 10x Genomics via their [website](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain).
 
 
 # Load data
 
 The following examples show how to load the data objects for each dataset.
 
-Note that the datasets are currently provided as `SingleCellExperiment` objects. This will be updated to the [SpatialExperiment](https://github.com/drighelli/SpatialExperiment) object structure in the future. The main advantage of changing to `SpatialExperiment`s will be the availability of accessor functions for x and y coordinates (which are currently accessed from `colData` instead).
+Note that the datasets are currently provided as `SingleCellExperiment` objects. This will be updated to the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) class in the future. One of the major advantages of changing to `SpatialExperiment`s will be the availability of accessor functions for the spatial x and y coordinates (which are currently accessed from `colData` instead).
 
 Also note that the formatted data objects are currently downloaded from Dropbox via links embedded in the `load_data` function. This will be updated to use Bioconductor's ExperimentHub once the object structures are finalized. Scripts to create the `SingleCellExperiment` object for each dataset are included in the `inst/scripts` directory in the source code of the `STdata` package.
 

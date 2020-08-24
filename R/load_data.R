@@ -33,7 +33,7 @@ load_data <- function(dataset_name, path = "tmp", delete = TRUE) {
   if (dataset_name == "human_DLPFC") {
     url <- "https://www.dropbox.com/s/rcrgyc9u9zq9bn9/human_DLPFC.RData?dl=1"
   } else if (dataset_name == "mouse_coronal") {
-    url <- "https://www.dropbox.com/s/b3cu79rk7dkupa8/mouse_coronal.RData?dl=1"
+    url <- "https://www.dropbox.com/s/lc49x7w23s5i87d/mouse_coronal.RData?dl=1"
   }
   
   fn <- file.path(path, gsub("\\?.*$", "", basename(url)))
@@ -46,7 +46,11 @@ load_data <- function(dataset_name, path = "tmp", delete = TRUE) {
     unlink(path, recursive = TRUE)
   }
   
-  spe
+  if (dataset_name == "human_DLPFC") {
+    spe
+  } else if (dataset_name == "mouse_coronal") {
+    ve
+  }
   
 }
 

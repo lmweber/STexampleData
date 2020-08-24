@@ -85,13 +85,16 @@ p + ggtitle("Spots in x-y coordinates")
 
 ```{r load_mouse_coronal}
 # load object
-spe <- load_data("mouse_coronal")
-spe
+ve <- load_data("mouse_coronal")
+ve
 
 # inspect object
-names(assays(spe))
-head(rowData(spe), 3)
-head(colData(spe), 3)
+names(assays(ve))
+head(rowData(ve), 3)
+head(colData(ve), 3)
+head(spatialCoords(ve), 3)
+scaleFactors(ve)
+imagePaths(ve)
 ```
 
 Plot spots in x-y space. This dataset does not contain any ground truth labels, so here we simply show the spots in x-y space.
@@ -100,19 +103,19 @@ To do: update plotting function to allow objects that do not contain any cluster
 
 ```{r plot_mouse_coronal, fig.width=4, fig.height=4}
 # add cluster IDs (to do: remove this)
-colData(spe)$cluster_id <- factor(1)
-
-p <- plotClustersSpots(
-  spe, 
-  x_coord = "x_coord", 
-  y_coord = "y_coord", 
-  cluster_id = "cluster_id", 
-  palette = "black"
-)
+# colData(spe)$cluster_id <- factor(1)
+# 
+# p <- plotClustersSpots(
+#   spe, 
+#   x_coord = "x_coord", 
+#   y_coord = "y_coord", 
+#   cluster_id = "cluster_id", 
+#   palette = "black"
+# )
 
 # remove legend (to do: remove this)
-p + 
-  theme(legend.position = "none") + 
-  ggtitle("Spots in x-y coordinates")
+# p + 
+#   theme(legend.position = "none") + 
+#   ggtitle("Spots in x-y coordinates")
 ```
 

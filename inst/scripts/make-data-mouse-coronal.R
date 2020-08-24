@@ -2,93 +2,121 @@
 # Script to create mouse coronal data object from raw data
 ##########################################################
 
-# -------------
-# Download data
-# -------------
-
 # for more details on raw data see:
 # https://support.10xgenomics.com/spatial-gene-expression/datasets
 # https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain
 
+# for more details on matrix format used by Cell Ranger see:
+# https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/matrices
+
+
+library(Matrix)
+library(rjson)
+library(SpatialExperiment)
+
+
+# -------------
+# Download data
+# -------------
+
+dir.create("mouse_coronal")
+
+# filtered feature-barcode matrix
 url <- "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_filtered_feature_bc_matrix.tar.gz"
 fn <- basename(url)
-dir.create("tmp")
-download.file(url, file.path("tmp", fn))
+download.file(url, file.path("mouse_coronal", fn))
+system(paste0("tar -C mouse_coronal -xvzf ", file.path("mouse_coronal", fn)))
 
-system(paste0("tar -C tmp -xvzf ", file.path("tmp", fn)))
+# spatial imaging data
+url <- "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz"
+fn <- basename(url)
+download.file(url, file.path("mouse_coronal", fn))
+system(paste0("tar -C mouse_coronal -xvzf ", file.path("mouse_coronal", fn)))
 
 
 # ---------
 # Load data
 # ---------
 
-# download data matrix
+# load features and barcodes
 
-# for more details on matrix format used by Cell Ranger see:
-# https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/matrices
+file_features <- file.path("mouse_coronal", "filtered_feature_bc_matrix", "features.tsv.gz")
+file_barcodes <- file.path("mouse_coronal", "filtered_feature_bc_matrix", "barcodes.tsv.gz")
 
-library(Matrix)
+df_features <- read.delim(file_features, header = FALSE, stringsAsFactors = FALSE)
+df_barcodes <- read.delim(file_barcodes, header = FALSE, stringsAsFactors = FALSE)
 
-matrix_dir <- file.path("tmp", "filtered_feature_bc_matrix")
+colnames(df_features) <- c("gene_id", "gene_name", "feature_type")
+colnames(df_barcodes) <- c("barcode_id")
 
-barcode_path <- file.path(matrix_dir, "barcodes.tsv.gz")
-features_path <- file.path(matrix_dir, "features.tsv.gz")
-matrix_path <- file.path(matrix_dir, "matrix.mtx.gz")
+rownames(df_features) <- df_features$gene_id
+rownames(df_barcodes) <- df_barcodes$barcode_id
 
-mat <- readMM(file = matrix_path)
-
-feature_names <- read.delim(features_path, header = FALSE, stringsAsFactors = FALSE)
-barcode_names <- read.delim(barcode_path, header = FALSE, stringsAsFactors = FALSE)
-colnames(mat) <- barcode_names$V1
-rownames(mat) <- feature_names$V1
+head(df_features)
+head(df_barcodes)
 
 
-# download spot coordinates
+# load feature-barcode matrix
 
-url <- "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz"
-fn <- basename(url)
-download.file(url, file.path("tmp", fn))
+file_matrix <- file.path("mouse_coronal", "filtered_feature_bc_matrix", "matrix.mtx.gz")
 
-system(paste0("tar -C tmp -xvzf ", file.path("tmp", fn)))
+mat <- readMM(file = file_matrix)
 
-spatial_dir <- file.path("tmp", "spatial")
-tissue_positions_path <- file.path(spatial_dir, "tissue_positions_list.csv")
-tissue_positions <- read.csv(tissue_positions_path, header = FALSE)
+stopifnot(nrow(mat) == nrow(df_features))
+stopifnot(ncol(mat) == nrow(df_barcodes))
 
-coords <- tissue_positions[, c("V1", "V5", "V6")]
-colnames(coords) <- c("barcode", "x_original", "y_original")
-rownames(coords) <- coords$barcode
-dim(coords)
-
-# flip x and y coordinates to match published images
-coords$x_coord <- coords$y_original
-coords$y_coord <- -coords$x_original
+rownames(mat) <- df_features$gene_id
+colnames(mat) <- df_barcodes$barcode_id
 
 
-# ------------------
-# Create data object
-# ------------------
+# load spatial coordinates
 
-# set up SingleCellExperiment
+file_tissue_positions <- file.path("mouse_coronal", "spatial", "tissue_positions_list.csv")
 
-# to do: use sparse matrix format
+df_tissue_positions <- read.csv(file_tissue_positions, header = FALSE)
 
-library(SingleCellExperiment)
+# note array row corresponds to pixel column and vice versa
+colnames(df_tissue_positions) <- c("barcode_id", "in_tissue", 
+                                   "array_row", "array_col", 
+                                   "pxl_col_in_fullres", "pxl_row_in_fullres")
 
-# match x-y coordinates for spots containing data
-coords_matched <- coords[colnames(mat), ]
-dim(coords_matched)
-stopifnot(all(rownames(coords_matched) == colnames(mat)))
+rownames(df_tissue_positions) <- df_tissue_positions$barcode_id
 
-# create SingleCellExperiment
-col_data <- DataFrame(coords_matched)
-row_data <- DataFrame(feature_names)
-colnames(row_data) <- c("gene_id", "gene_name", "type")
+# keep spatial coordinates for barcodes that overlap with tissue
+df_tissue_positions_keep <- df_tissue_positions[df_barcodes$barcode_id, ]
 
-spe <- SingleCellExperiment(
-  assays = list(counts = as.matrix(mat)),  ## to do: use sparse matrix format
-  rowData = row_data, 
-  colData = col_data
+stopifnot(nrow(df_tissue_positions_keep) == nrow(df_barcodes))
+table(df_tissue_positions_keep$in_tissue)
+
+
+# load scale factors for image files
+
+file_scale_factors <- file.path("mouse_coronal", "spatial", "scalefactors_json.json")
+
+scale_factors <- fromJSON(file = file_scale_factors)
+
+
+# paths to image files
+
+image_paths <- c(
+  aligned_fiducials = file.path("mouse_coronal", "spatial", "aligned_fiducials.jpg"), 
+  detected_tissue_image = file.path("mouse_coronal", "spatial", "detected_tissue_image.jpg"), 
+  tissue_hires_image = file.path("mouse_coronal", "spatial", "tissue_hires_image.png"), 
+  tissue_lowres_image = file.path("mouse_coronal", "spatial", "tissue_lowres_image.png")
+)
+
+
+# -----------------------
+# Create VisiumExperiment
+# -----------------------
+
+ve <- VisiumExperiment(
+  rowData = df_features, 
+  colData = df_barcodes, 
+  assays = list(counts = mat), 
+  spatialCoords = df_tissue_positions_keep, 
+  scaleFactors = scale_factors, 
+  imagePaths = image_paths
 )
 
 
@@ -96,16 +124,16 @@ spe <- SingleCellExperiment(
 # Delete temporary files
 # ----------------------
 
-unlink("tmp", recursive = TRUE)
+unlink("mouse_coronal", recursive = TRUE)
 
 
 # ----------------
 # Save data object
 # ----------------
 
-# to do: store on ExperimentHub
+# to do: move to ExperimentHub
 
 # for now: saving as publicly accessible Dropbox link
 
-save(spe, file = "~/Dropbox/STdata/mouse_coronal.RData")
+save(ve, file = "~/Dropbox/STdata/mouse_coronal.RData")
 

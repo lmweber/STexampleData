@@ -23,12 +23,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-The `SpaData` package contains a collection of spatial transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
+The `SpaData` package contains a collection of spatially resolved transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
 
 
 ## Datasets
 
-Currently, the package contains two datasets:
+Currently, the package contains two datasets. These are both from the 10x Genomics Visium platform.
 
 - `human_DLPFC`: a single sample (sample 151673) from our previously published dataset consisting of 12 samples from the human dorsolateral prefrontal cortex (DLPFC) in the human brain, from 3 neurotypical donors, measured with the 10x Genomics Visium platform. The original dataset is available via the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) package, and is described in our preprint [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1).
 

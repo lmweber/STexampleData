@@ -2,7 +2,7 @@
 
 [![R build status](https://github.com/lmweber/SpaData/workflows/R-CMD-check/badge.svg)](https://github.com/lmweber/SpaData/actions)
 
-Collection of spatial transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
+Collection of spatially resolved transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
 
 Datasets are currently stored as `SingleCellExperiment` objects. This will be updated to use the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) class.
 

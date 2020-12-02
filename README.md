@@ -12,7 +12,7 @@ Datasets are currently stored as `SingleCellExperiment` objects. This will be up
 To view the vignette while the package is still on GitHub, install the package with the options `build_vignettes = TRUE` and `force = TRUE`, then load the vignette locally:
 
 ```
-devtools::install_github("lmweber/SpaData", build_vignettes = TRUE, force = TRUE)
+remotes::install_github("lmweber/SpaData", build_vignettes = TRUE, force = TRUE)
 
 vignette("SpaData_overview", package = "SpaData")
 ```

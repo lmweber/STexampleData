@@ -18,7 +18,7 @@ or "mouse_coronal".}
 SingleCellExperiment object
 }
 \description{
-Function to load data objects from STdata package
+Function to load data objects from SpaData package
 }
 \details{
 Temporary function to load data objects via Dropbox links (until package is

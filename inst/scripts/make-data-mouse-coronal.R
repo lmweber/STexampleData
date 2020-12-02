@@ -135,5 +135,5 @@ unlink("mouse_coronal", recursive = TRUE)
 
 # for now: saving as publicly accessible Dropbox link
 
-save(ve, file = "~/Dropbox/STdata/mouse_coronal.RData")
+save(ve, file = "~/Dropbox/SpaData/mouse_coronal.RData")
 

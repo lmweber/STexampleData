@@ -1,6 +1,6 @@
-# STdata
+# SpaData
 
-[![R build status](https://github.com/lmweber/STdata/workflows/R-CMD-check/badge.svg)](https://github.com/lmweber/STdata/actions)
+[![R build status](https://github.com/lmweber/SpaData/workflows/R-CMD-check/badge.svg)](https://github.com/lmweber/SpaData/actions)
 
 Collection of spatial transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
 
@@ -12,8 +12,8 @@ Datasets are currently stored as `SingleCellExperiment` objects. This will be up
 To view the vignette while the package is still on GitHub, install the package with the options `build_vignettes = TRUE` and `force = TRUE`, then load the vignette locally:
 
 ```
-devtools::install_github("lmweber/STdata", build_vignettes = TRUE, force = TRUE)
+devtools::install_github("lmweber/SpaData", build_vignettes = TRUE, force = TRUE)
 
-vignette("STdata_overview", package = "STdata")
+vignette("SpaData_overview", package = "SpaData")
 ```
 

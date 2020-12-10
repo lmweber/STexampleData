@@ -70,7 +70,7 @@ dim(counts)
 dim(df_tisspos)
 
 # image file paths
-image_paths <- c(
+img_paths <- c(
   aligned_fiducials = file.path("tmp", "spatial", "aligned_fiducials.jpg"), 
   detected_tissue_image = file.path("tmp", "spatial", "detected_tissue_image.jpg"), 
   tissue_hires_image = file.path("tmp", "spatial", "tissue_hires_image.png"), 
@@ -82,9 +82,9 @@ file_scale_factors <- file.path("tmp", "spatial", "scalefactors_json.json")
 scale_factors <- fromJSON(file = file_scale_factors)
 
 
-# ------------------------
-# Create SpatialExperiment
-# ------------------------
+# --------------
+# Match barcodes
+# --------------
 
 # match and re-order barcode IDs (rows) in df_barcodes and df_tisspos
 dim(df_barcodes)
@@ -100,26 +100,35 @@ stopifnot(all(df_barcodes$barcode_id == df_tisspos_ord$barcode_id))
 head(df_barcodes)
 head(df_tisspos_ord)
 
+
+# ------------------------
+# Create SpatialExperiment
+# ------------------------
+
 # row data
 row_data <- df_features
 
 # column data
 # note: add sample ID
 col_data <- df_barcodes
-col_data$sample_id <- "sample_01"
+# note: currently not working with custom sample ID
+#col_data$sample_id <- "sample_01"
 
 # spatial coordinates
 # note: add "x_coord" and "y_coord" with flipped/reversed coordinates (standard orientation)
 spatial_coords <- df_tisspos_ord
-spatial_coords$x_coord <- spatial_coords$pxl_row_in_fullres
-spatial_coords$y_coord <- -1 * spatial_coords$pxl_col_in_fullres
+# note: including both x/y_coord and pxl_row/col_in_fullres currently not working
+#spatial_coords$x_coord <- spatial_coords$pxl_row_in_fullres
+#spatial_coords$y_coord <- -1 * spatial_coords$pxl_col_in_fullres + max(spatial_coords$pxl_col_in_fullres) + 1
+# note: column "in_tissue" must be logical
+spatial_coords$in_tissue <- as.logical(spatial_coords$in_tissue)
 
 # image data
-# note: here we read in only one of the image files (low resolution)
+# note: reading in both low and high resolution image from Space Ranger
 img_data <- readImgData(
   path = file.path("tmp", "spatial"), 
-  sample_id = "sample_01", 
-  imageSources = image_paths["tissue_lowres_image"], 
+  sample_id = "Sample01", 
+  imageSources = c(img_paths["tissue_lowres_image"], img_paths["tissue_hires_image"]), 
   scaleFactors = file_scale_factors, 
   load = TRUE
 )
@@ -130,12 +139,7 @@ spe <- SpatialExperiment(
   rowData = row_data, 
   colData = col_data, 
   spatialCoords = spatial_coords, 
-  scaleFactors = scale_factors, 
-  imgData = img_data, 
-  imageSources = img_paths, 
-  loadImage = TRUE, 
-  sample_id = "sample_01", 
-  image_id = "lowres"
+  imgData = img_data
 )
 
 spe

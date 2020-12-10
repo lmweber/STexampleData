@@ -9,7 +9,7 @@ Datasets are stored as objects from the [SpatialExperiment](https://bioconductor
 
 ## Installation
 
-Currently, the package is available from GitHub. This will be moved to Bioconductor in the future.
+Currently, the package is available from GitHub. This will be moved to Bioconductor's ExperimentHub in the future.
 
 To install from GitHub including vignettes, use the following options:
 

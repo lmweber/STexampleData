@@ -10,9 +10,9 @@
 # https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/output/matrices
 
 
+library(SpatialExperiment)
 library(Matrix)
 library(rjson)
-library(SpatialExperiment)
 
 
 # -------------
@@ -109,22 +109,25 @@ head(df_tisspos_ord)
 row_data <- df_features
 
 # column data
-# note: add sample ID
 col_data <- df_barcodes
+# add custom sample ID
 # note: currently not working with custom sample ID
 #col_data$sample_id <- "sample_01"
 
 # spatial coordinates
-# note: add "x_coord" and "y_coord" with flipped/reversed coordinates (standard orientation)
-spatial_coords <- df_tisspos_ord
-# note: including both x/y_coord and pxl_row/col_in_fullres currently not working
-#spatial_coords$x_coord <- spatial_coords$pxl_row_in_fullres
-#spatial_coords$y_coord <- -1 * spatial_coords$pxl_col_in_fullres + max(spatial_coords$pxl_col_in_fullres) + 1
+# add custom "x_coord" and "y_coord" with flipped/reversed coordinates for Visium platform
+spatial_coords <- df_tisspos_ord[, c("barcode_id", "in_tissue")]
+spatial_coords$x_coord <- df_tisspos_ord$pxl_row_in_fullres
+spatial_coords$y_coord <- -1 * df_tisspos_ord$pxl_col_in_fullres + max(df_tisspos_ord$pxl_col_in_fullres) + 1
 # note: column "in_tissue" must be logical
 spatial_coords$in_tissue <- as.logical(spatial_coords$in_tissue)
 
+# additional column data
+# keep columns with raw coordinates (may be useful for some users)
+col_data_additional <- df_tisspos_ord[, c("array_row", "array_col", "pxl_col_in_fullres", "pxl_row_in_fullres")]
+
 # image data
-# note: reading in both low and high resolution image from Space Ranger
+# both low and high resolution images from Space Ranger
 img_data <- readImgData(
   path = file.path("tmp", "spatial"), 
   sample_id = "Sample01", 
@@ -137,7 +140,7 @@ img_data <- readImgData(
 spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
-  colData = col_data, 
+  colData = cbind(col_data, col_data_additional), 
   spatialCoords = spatial_coords, 
   imgData = img_data
 )
@@ -157,8 +160,6 @@ unlink("tmp", recursive = TRUE)
 # ----------------
 
 # to do: move to ExperimentHub
-
 # for now: saving as publicly accessible Dropbox link
-
 save(spe, file = "~/Dropbox/SpaData/mouse_coronal.RData")
 

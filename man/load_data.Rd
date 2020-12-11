@@ -15,14 +15,14 @@ or "mouse_coronal".}
 \item{delete}{Whether to delete temporary files. Default = TRUE.}
 }
 \value{
-SingleCellExperiment object
+SpatialExperiment object
 }
 \description{
 Function to load data objects from SpaData package
 }
 \details{
-Temporary function to load data objects via Dropbox links (until package is
-set up on Bioconductor's ExperimentHub).
+Function to load data objects from public Dropbox links (until package is
+moved to Bioconductor's ExperimentHub).
 }
 \examples{
 #spe <- load_data("human_DLPFC")

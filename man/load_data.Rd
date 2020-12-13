@@ -21,8 +21,8 @@ SpatialExperiment object
 Function to load data objects from STdata package
 }
 \details{
-Function to load data objects from public Dropbox links (until package is
-moved to Bioconductor's ExperimentHub).
+Function to load data objects from Dropbox links (until package is moved to
+Bioconductor's ExperimentHub).
 }
 \examples{
 #spe <- load_data("human_DLPFC")

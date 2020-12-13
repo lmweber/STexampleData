@@ -2,8 +2,8 @@
 #' 
 #' Function to load data objects from STdata package
 #' 
-#' Function to load data objects from public Dropbox links (until package is
-#' moved to Bioconductor's ExperimentHub).
+#' Function to load data objects from Dropbox links (until package is moved to
+#' Bioconductor's ExperimentHub).
 #' 
 #' 
 #' @param dataset_name Name of dataset. Currently accepts either "human_DLPFC"
@@ -29,7 +29,7 @@ load_data <- function(dataset_name, path = "tmp", delete = TRUE) {
   
   match.arg(dataset_name, choices = c("human_DLPFC", "mouse_coronal"))
   
-  # note: change "dl=0" to "dl=1" in link copied from Dropbox website to enable downloading
+  # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
   if (dataset_name == "human_DLPFC") {
     url <- "https://www.dropbox.com/s/rcrgyc9u9zq9bn9/human_DLPFC.RData?dl=1"
   } else if (dataset_name == "mouse_coronal") {

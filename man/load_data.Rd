@@ -18,7 +18,7 @@ or "mouse_coronal".}
 SpatialExperiment object
 }
 \description{
-Function to load data objects from SpaData package
+Function to load data objects from STdata package
 }
 \details{
 Function to load data objects from public Dropbox links (until package is

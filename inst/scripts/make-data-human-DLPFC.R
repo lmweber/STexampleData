@@ -50,5 +50,5 @@ colData(spe)$y_coord <- -colData(spe)[, "imagerow"]
 # Save data object
 # ----------------
 
-save(spe, file = "~/Dropbox/SpaData/human_DLPFC.RData")
+save(spe, file = "~/Dropbox/STdata/human_DLPFC.RData")
 

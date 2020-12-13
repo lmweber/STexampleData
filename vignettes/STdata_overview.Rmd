@@ -1,5 +1,5 @@
 ---
-title: "SpaData package overview"
+title: "STdata package overview"
 author: 
   - name: Lukas M. Weber
     affiliation: 
@@ -7,11 +7,11 @@ author:
   - name: Stephanie C. Hicks
     affiliation: 
       - *id1
-package: SpaData
+package: STdata
 output: 
   BiocStyle::html_document
 vignette: >
-  %\VignetteIndexEntry{SpaData package overview}
+  %\VignetteIndexEntry{STdata package overview}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-The `SpaData` package contains a collection of spatially resolved transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
+The `STdata` package contains a collection of spatially resolved transcriptomics datasets stored in Bioconductor object formats. These datasets are designed for use in our online textbook "Orchestrating Spatial Transcriptomics Analysis with Bioconductor" (OSTA), as well as for other examples, demonstrations, and teaching purposes.
 
 
 ## Datasets
@@ -41,7 +41,7 @@ The following examples show how to load the data objects for each dataset.
 
 Note that the datasets are currently provided as `SingleCellExperiment` objects. This will be updated to the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) class in the future. One of the major advantages of changing to `SpatialExperiment`s will be the availability of accessor functions for the spatial x and y coordinates (which are currently accessed from `colData` instead).
 
-Also note that the formatted data objects are currently downloaded from Dropbox via links embedded in the `load_data` function. This will be updated to use Bioconductor's ExperimentHub once the object structures are finalized. Scripts to create the `SingleCellExperiment` object for each dataset are included in the `inst/scripts` directory in the source code of the `SpaData` package.
+Also note that the formatted data objects are currently downloaded from Dropbox via links embedded in the `load_data` function. This will be updated to use Bioconductor's ExperimentHub once the object structures are finalized. Scripts to create the `SingleCellExperiment` object for each dataset are included in the `inst/scripts` directory in the source code of the `STdata` package.
 
 
 ## Human DLPFC
@@ -49,7 +49,7 @@ Also note that the formatted data objects are currently downloaded from Dropbox 
 Load data object.
 
 ```{r load_human_DLPFC, message=FALSE}
-library(SpaData)
+library(STdata)
 library(SingleCellExperiment)
 
 # load object

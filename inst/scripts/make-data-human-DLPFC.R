@@ -79,7 +79,12 @@ rownames(row_data) <- rowData(sce_sub)$gene_id
 # column data
 col_data <- colData(sce_sub)[, c("barcode", "row", "col", "imagerow", "imagecol", 
                                  "height", "width", "cell_count")]
-col_data$ground_truth <- colData(sce_sub)[, "layer_guess_reordered"]
+# ground truth labels with NAs included as factor level for easier plotting
+ground_truth <- as.character(colData(sce_sub)[, "layer_guess_reordered"])
+ground_truth[ground_truth == "WM"] <- "White_matter"
+ground_truth[is.na(ground_truth)] <- "NA"
+ground_truth <- factor(ground_truth, levels = c("Layer1", "Layer2", "Layer3", "Layer4", "Layer5", "Layer6", "White_matter", "NA"))
+col_data$ground_truth <- ground_truth
 # add custom sample ID
 # note: currently not working with custom sample ID
 #col_data$sample_id <- "sample_01"

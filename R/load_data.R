@@ -31,7 +31,7 @@ load_data <- function(dataset_name, path = "tmp", delete = TRUE) {
   
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
   if (dataset_name == "human_DLPFC") {
-    url <- "https://www.dropbox.com/s/rcrgyc9u9zq9bn9/human_DLPFC.RData?dl=1"
+    url <- "https://www.dropbox.com/s/f26li36ov1aebl8/human_DLPFC.RData?dl=1"
   } else if (dataset_name == "mouse_coronal") {
     url <- "https://www.dropbox.com/s/qpbjgcl4o5q29b7/mouse_coronal.RData?dl=1"
   }

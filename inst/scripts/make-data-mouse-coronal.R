@@ -1,5 +1,6 @@
 ##########################################################
 # Script to create mouse coronal data object from raw data
+# Lukas Weber, December 2020
 ##########################################################
 
 # for more details on raw data see:

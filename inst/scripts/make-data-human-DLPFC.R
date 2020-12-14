@@ -1,5 +1,6 @@
 ########################################################
 # Script to create human DLPFC data object from raw data
+# Lukas Weber, December 2020
 ########################################################
 
 # for more details on this dataset see:

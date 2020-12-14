@@ -10,6 +10,7 @@ biocViews:
     SingleCell
 Depends: R (>= 4.0.0)
 Imports:
+    SpatialExperiment, 
     SingleCellExperiment, 
     utils
 VignetteBuilder: knitr

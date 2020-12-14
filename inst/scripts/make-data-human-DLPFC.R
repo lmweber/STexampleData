@@ -122,7 +122,5 @@ spe
 # Save data object
 # ----------------
 
-# to do: move to ExperimentHub
-# for now: saving as publicly accessible Dropbox link
 save(spe, file = "~/Dropbox/STdata/human_DLPFC.RData")
 

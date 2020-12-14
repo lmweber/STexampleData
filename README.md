@@ -1,6 +1,6 @@
 # STdata
 
-[![R build status](https://github.com/lmweber/STdata/workflows/R-CMD-check/badge.svg)](https://github.com/lmweber/STdata/actions)
+<!-- [![R build status](https://github.com/lmweber/STdata/workflows/R-CMD-check/badge.svg)](https://github.com/lmweber/STdata/actions) -->
 
 Collection of spatially resolved transcriptomics datasets in [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor object format.
 

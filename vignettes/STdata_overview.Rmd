@@ -30,9 +30,9 @@ The `SpatialExperiment` class is an extension of `SingleCellExperiment`, adapted
 
 The package contains the following datasets:
 
-- `mouse_coronal` (10x Genomics Visium): a single coronal section from the mouse brain, spanning one hemisphere. Previously provided by 10x Genomics from their [website](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain).
+- `Visium_mouseCoronal` (10x Genomics Visium): a single coronal section from the mouse brain, spanning one hemisphere. Previously provided by 10x Genomics from their [website](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain).
 
-- `human_DLPFC` (10x Genomics Visium): a single sample (sample 151673) from our previously published dataset consisting of 12 samples from the human dorsolateral prefrontal cortex (DLPFC) in the human brain, from 3 neurotypical donors. The original dataset is available via the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) Bioconductor package, and is described in our paper [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1).
+- `Visium_humanDLPFC` (10x Genomics Visium): a single sample (sample 151673) from our previously published dataset consisting of 12 samples from the human dorsolateral prefrontal cortex (DLPFC) in the human brain, from 3 neurotypical donors. The original dataset is available via the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) Bioconductor package, and is described in our paper [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1).
 
 
 # Load data
@@ -44,7 +44,7 @@ library(STdata)
 library(SpatialExperiment)
 
 # load SpatialExperiment object
-spe <- load_data("mouse_coronal")
+spe <- load_data("Visium_mouseCoronal")
 spe
 
 # inspect object

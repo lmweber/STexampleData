@@ -98,13 +98,21 @@ col_data <- metadata_sub
 colnames(col_data)[1] <- "cell_id"
 head(col_data)
 
+# spatial data: store x-y coordinates in spatialData
+spatial_data <- metadata_sub[, c("uniqueID", "x_global_affine", "y_global_affine")]
+colnames(spatial_data) <- c("cell_id", "x_coord", "y_coord")
+head(spatial_data)
+
+stopifnot(nrow(spatial_data) == nrow(col_data))
+
 # create SpatialExperiment
 spe <- SpatialExperiment(
   assays = list(
     counts = counts_sub, 
     molecules = bumpy_assay), 
   rowData = row_data, 
-  colData = col_data
+  colData = col_data, 
+  spatialCoords = spatial_data
 )
 
 spe

@@ -7,8 +7,8 @@
 load_data(dataset_name, path = "tmp", delete = TRUE)
 }
 \arguments{
-\item{dataset_name}{Name of dataset. Currently accepts either "human_DLPFC"
-or "mouse_coronal".}
+\item{dataset_name}{Name of dataset. Currently accepts "human_DLPFC",
+"mouse_coronal", or "seqFISH_mouseEmbryo".}
 
 \item{path}{Directory to save temporary files. Default = "tmp".}
 
@@ -27,5 +27,6 @@ Bioconductor's ExperimentHub).
 \examples{
 #spe <- load_data("human_DLPFC")
 #spe <- load_data("mouse_coronal")
+#spe <- load_data("seqFISH_mouseEmbryo")
 
 }

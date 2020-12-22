@@ -117,24 +117,25 @@ col_data <- df_barcodes
 #col_data$sample_id <- "sample_01"
 rownames(col_data) <- df_barcodes$barcode_id
 
-# spatial coordinates
+# spatial data
 # add custom "x_coord" and "y_coord" with flipped/reversed coordinates for Visium platform
-spatial_coords <- df_tisspos_ord[, c("barcode_id", "in_tissue")]
-spatial_coords$x_coord <- df_tisspos_ord$pxl_row_in_fullres
-spatial_coords$y_coord <- -1 * df_tisspos_ord$pxl_col_in_fullres + max(df_tisspos_ord$pxl_col_in_fullres) + 1
+spatial_data <- df_tisspos_ord[, c("barcode_id", "in_tissue")]
+spatial_data$x_coord <- df_tisspos_ord$pxl_row_in_fullres
+spatial_data$y_coord <- -1 * df_tisspos_ord$pxl_col_in_fullres + max(df_tisspos_ord$pxl_col_in_fullres) + 1
 # note: column "in_tissue" must be logical
-spatial_coords$in_tissue <- as.logical(spatial_coords$in_tissue)
-rownames(spatial_coords) <- df_tisspos_ord$barcode_id
+spatial_data$in_tissue <- as.logical(spatial_data$in_tissue)
+rownames(spatial_data) <- df_tisspos_ord$barcode_id
 
 # additional column data
 # keep columns with raw coordinates (may be useful for some users)
 col_data_additional <- df_tisspos_ord[, c("array_row", "array_col", "pxl_col_in_fullres", "pxl_row_in_fullres")]
 rownames(col_data_additional) <- df_tisspos_ord$barcode_id
+col_data <- cbind(col_data, col_data_additional)
 
 # checks
-stopifnot(all(rownames(col_data) == rownames(spatial_coords)))
+stopifnot(all(rownames(col_data) == rownames(spatial_data)))
 stopifnot(all(rownames(col_data) == rownames(col_data_additional)))
-stopifnot(nrow(col_data) == nrow(spatial_coords))
+stopifnot(nrow(col_data) == nrow(spatial_data))
 stopifnot(nrow(col_data) == nrow(col_data_additional))
 
 # image data
@@ -151,8 +152,8 @@ img_data <- readImgData(
 spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
-  colData = cbind(col_data, col_data_additional), 
-  spatialCoords = spatial_coords, 
+  colData = col_data, 
+  spatialCoords = spatial_data, 
   imgData = img_data
 )
 

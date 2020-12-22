@@ -91,15 +91,15 @@ col_data$ground_truth <- ground_truth
 colnames(col_data)[1] <- "barcode_id"
 rownames(col_data) <- colData(sce_sub)$barcode
 
-# spatial coordinates
+# spatial data
 # add custom "x_coord" and "y_coord" with flipped/reversed coordinates for Visium platform
-spatial_coords <- colData(sce_sub)[, c("barcode", "tissue")]
-colnames(spatial_coords) <- c("barcode_id", "in_tissue")
-spatial_coords$x_coord <- colData(sce_sub)[, "imagecol"]
-spatial_coords$y_coord <- -1 * colData(sce_sub)[, "imagerow"] + max(colData(sce_sub)[, "imagerow"]) + 1
+spatial_data <- colData(sce_sub)[, c("barcode", "tissue")]
+colnames(spatial_data) <- c("barcode_id", "in_tissue")
+spatial_data$x_coord <- colData(sce_sub)[, "imagecol"]
+spatial_data$y_coord <- -1 * colData(sce_sub)[, "imagerow"] + max(colData(sce_sub)[, "imagerow"]) + 1
 # note: column "in_tissue" must be logical
-spatial_coords$in_tissue <- as.logical(as.numeric(spatial_coords$in_tissue))
-rownames(spatial_coords) <- colData(sce_sub)$barcode
+spatial_data$in_tissue <- as.logical(as.numeric(spatial_coords$in_tissue))
+rownames(spatial_data) <- colData(sce_sub)$barcode
 
 # image data
 # both low and high resolution images from Space Ranger
@@ -116,7 +116,7 @@ spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
   colData = col_data, 
-  spatialCoords = spatial_coords, 
+  spatialCoords = spatial_data, 
   imgData = img_data
 )
 

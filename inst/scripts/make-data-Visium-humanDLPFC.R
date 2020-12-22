@@ -1,7 +1,7 @@
-########################################################
-# Script to create human DLPFC data object from raw data
+###############################################################
+# Script to create Visium human DLPFC data object from raw data
 # Lukas Weber, December 2020
-########################################################
+###############################################################
 
 # for more details on this dataset see:
 # http://spatial.libd.org/spatialLIBD/
@@ -98,7 +98,7 @@ colnames(spatial_data) <- c("barcode_id", "in_tissue")
 spatial_data$x_coord <- colData(sce_sub)[, "imagecol"]
 spatial_data$y_coord <- -1 * colData(sce_sub)[, "imagerow"] + max(colData(sce_sub)[, "imagerow"]) + 1
 # note: column "in_tissue" must be logical
-spatial_data$in_tissue <- as.logical(as.numeric(spatial_coords$in_tissue))
+spatial_data$in_tissue <- as.logical(as.numeric(spatial_data$in_tissue))
 rownames(spatial_data) <- colData(sce_sub)$barcode
 
 # image data
@@ -127,5 +127,5 @@ spe
 # Save data object
 # ----------------
 
-save(spe, file = "~/Dropbox/STdata/human_DLPFC.RData")
+save(spe, file = "~/Dropbox/STdata/Visium_humanDLPFC.RData")
 

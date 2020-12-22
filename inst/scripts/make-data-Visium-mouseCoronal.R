@@ -1,7 +1,7 @@
-##########################################################
-# Script to create mouse coronal data object from raw data
+#################################################################
+# Script to create Visium mouse coronal data object from raw data
 # Lukas Weber, December 2020
-##########################################################
+#################################################################
 
 # for more details on raw data see:
 # https://support.10xgenomics.com/spatial-gene-expression/datasets
@@ -171,5 +171,5 @@ unlink("tmp", recursive = TRUE)
 # Save data object
 # ----------------
 
-save(spe, file = "~/Dropbox/STdata/mouse_coronal.RData")
+save(spe, file = "~/Dropbox/STdata/Visium_mouseCoronal.RData")
 

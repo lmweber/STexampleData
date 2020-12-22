@@ -13,7 +13,6 @@
 
 
 library(SpatialExperiment)
-library(Matrix)
 library(BumpyMatrix)
 library(tidyverse)
 
@@ -83,6 +82,11 @@ counts_sub[1:6, 1:6]
 # assay: BumpyMatrix containing mRNA molecule positions and other information
 bumpy_cols <- c("x_global_affine", "y_global_affine", "seeds", "intensity")
 bumpy_assay <- splitAsBumpyMatrix(mRNA_sub[, bumpy_cols], row = mRNA_sub$geneID, column = mRNA_sub$uniqueID)
+# remove cells/columns missing from counts matrix and match column order
+bumpy_assay <- bumpy_assay[, colnames(counts_sub)]
+
+stopifnot(ncol(counts_sub) == ncol(bumpy_assay))
+stopifnot(all(colnames(counts_sub) == colnames(bumpy_assay)))
 
 # row data
 row_data <- data.frame(gene_name = rownames(counts_sub))
@@ -97,9 +101,8 @@ head(col_data)
 # create SpatialExperiment
 spe <- SpatialExperiment(
   assays = list(
-    counts = counts_sub#, 
-    #molecules = bumpy_assay
-  ), 
+    counts = counts_sub, 
+    molecules = bumpy_assay), 
   rowData = row_data, 
   colData = col_data
 )

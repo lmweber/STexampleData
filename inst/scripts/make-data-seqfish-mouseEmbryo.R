@@ -123,7 +123,7 @@ spe <- SpatialExperiment(
     molecules = bumpy_assay), 
   rowData = row_data, 
   colData = col_data, 
-  spatialCoords = spatial_data
+  spatialData = spatial_data
 )
 
 spe

@@ -153,7 +153,7 @@ spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
   colData = col_data, 
-  spatialCoords = spatial_data, 
+  spatialData = spatial_data, 
   imgData = img_data
 )
 

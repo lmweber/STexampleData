@@ -48,10 +48,11 @@ spe <- load_data("Visium_mouseCoronal")
 spe
 
 # inspect object
+dim(spe)
 assayNames(spe)
 rowData(spe)
 colData(spe)
-spatialCoords(spe)
+spatialData(spe)
 imgData(spe)
 ```
 

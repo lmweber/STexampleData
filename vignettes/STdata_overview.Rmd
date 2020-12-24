@@ -30,29 +30,72 @@ The `SpatialExperiment` class is an extension of `SingleCellExperiment`, adapted
 
 The package contains the following datasets:
 
-- `Visium_mouseCoronal` (10x Genomics Visium): a single coronal section from the mouse brain, spanning one hemisphere. Previously provided by 10x Genomics from their [website](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain).
+- `Visium_humanDLPFC` (10x Genomics Visium): A single sample (sample 151673) of human brain dorsolateral prefrontal cortex (DLPFC) in the human brain, measured using the 10x Genomics Visium platform. This is a subset of the full dataset containing 12 samples from 3 neurotypical donors, published by [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1). The original dataset is also available from the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) Bioconductor package.
 
-- `Visium_humanDLPFC` (10x Genomics Visium): a single sample (sample 151673) from our previously published dataset consisting of 12 samples from the human dorsolateral prefrontal cortex (DLPFC) in the human brain, from 3 neurotypical donors. The original dataset is available via the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) Bioconductor package, and is described in our paper [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1).
+- `Visium_mouseCoronal` (10x Genomics Visium): A single coronal section from the mouse brain, spanning one hemisphere. This dataset was previously released by 10x Genomics on their [website](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain).
+
+- `seqFISH_mouseEmbryo` (seqFISH): A subset of cells (embryo 1, z-slice 2) from a previously published dataset investigating mouse embryogenesis by [Lohoff and Ghazanfar et al. 2020](https://www.biorxiv.org/content/10.1101/2020.11.20.391896v1), generated using the seqFISH platform. The full dataset is also [available online](https://marionilab.cruk.cam.ac.uk/SpatialMouseAtlas/).
 
 
 # Load data
 
-The following example shows how to load the `SpatialExperiment` data objects in an R session.
+The following examples show how to load the example datasets as `SpatialExperiment` objects in an R session.
+
+
+## Load packages
 
 ```{r, message=FALSE}
-library(STdata)
 library(SpatialExperiment)
+library(STdata)
+```
 
-# load SpatialExperiment object
-spe <- load_data("Visium_mouseCoronal")
-spe
+
+## Visium_humanDLPFC
+
+```{r, message=FALSE}
+# load object
+spe <- load_data("Visium_humanDLPFC")
 
 # inspect object
+spe
 dim(spe)
 assayNames(spe)
 rowData(spe)
 colData(spe)
 spatialData(spe)
 imgData(spe)
+```
+
+
+## Visium_mouseCoronal
+
+```{r, message=FALSE}
+# load object
+spe <- load_data("Visium_mouseCoronal")
+
+# inspect object
+spe
+dim(spe)
+assayNames(spe)
+rowData(spe)
+colData(spe)
+spatialData(spe)
+imgData(spe)
+```
+
+
+## seqFISH_mouseEmbryo
+
+```{r, message=FALSE}
+# load object
+spe <- load_data("seqFISH_mouseEmbryo")
+
+# inspect object
+spe
+dim(spe)
+assayNames(spe)
+rowData(spe)
+colData(spe)
+spatialData(spe)
 ```
 

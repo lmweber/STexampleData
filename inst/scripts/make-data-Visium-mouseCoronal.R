@@ -22,9 +22,9 @@ library(rjson)
 
 dir.create("tmp")
 
-# filtered feature-barcode matrix
-# note: filtered matrix contains only spots over tissue; raw matrix contains all spots
-url <- "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_filtered_feature_bc_matrix.tar.gz"
+# raw feature-barcode matrix
+# note: raw matrix contains all spots; filtered matrix contains only spots over tissue
+url <- "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz"
 fn <- basename(url)
 download.file(url, file.path("tmp", fn))
 system(paste0("tar -C tmp -xvzf ", file.path("tmp", fn)))
@@ -41,17 +41,17 @@ system(paste0("tar -C tmp -xvzf ", file.path("tmp", fn)))
 # ---------
 
 # barcodes
-file_barcodes <- file.path("tmp", "filtered_feature_bc_matrix", "barcodes.tsv.gz")
+file_barcodes <- file.path("tmp", "raw_feature_bc_matrix", "barcodes.tsv.gz")
 df_barcodes <- read.csv(file_barcodes, sep = "\t", header = FALSE, 
                         col.names = c("barcode_id"))
 
 # features
-file_features <- file.path("tmp", "filtered_feature_bc_matrix", "features.tsv.gz")
+file_features <- file.path("tmp", "raw_feature_bc_matrix", "features.tsv.gz")
 df_features <- read.csv(file_features, sep = "\t", header = FALSE, 
                         col.names = c("gene_id", "gene_name", "feature_type"))
 
 # counts
-file_counts <- file.path("tmp", "filtered_feature_bc_matrix", "matrix.mtx.gz")
+file_counts <- file.path("tmp", "raw_feature_bc_matrix", "matrix.mtx.gz")
 counts <- readMM(file = file_counts)
 
 stopifnot(nrow(counts) == nrow(df_features))
@@ -67,7 +67,8 @@ df_tisspos <- read.csv(file_tisspos, header = FALSE,
 dim(df_barcodes)
 dim(df_features)
 dim(counts)
-# note: df_tisspos contains all spots (not filtered), so need to match spots below
+# note: df_tisspos contains all spots (even if using filtered data) and order of
+# spots does not match df_barcodes; match and re-order below
 dim(df_tisspos)
 
 # image file paths
@@ -87,9 +88,16 @@ scale_factors <- fromJSON(file = file_scale_factors)
 # Match barcodes
 # --------------
 
-# match and re-order barcode IDs (rows) in df_barcodes and df_tisspos
+# check order of rows (barcodes) in df_barcodes and df_tisspos
 dim(df_barcodes)
 dim(df_tisspos)
+head(df_barcodes)
+head(df_tisspos)
+nrow(df_barcodes) == nrow(df_tisspos)
+# order does not match
+all(df_barcodes$barcode_id == df_tisspos$barcode_id)
+
+# match and re-order rows in df_tisspos
 ord <- match(df_barcodes$barcode_id, df_tisspos$barcode_id)
 df_tisspos_ord <- df_tisspos[ord, ]
 rownames(df_tisspos_ord) <- NULL
@@ -153,7 +161,7 @@ spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
   colData = col_data, 
-  spatialData = spatial_data, 
+  spatialCoords = spatial_data, 
   imgData = img_data
 )
 

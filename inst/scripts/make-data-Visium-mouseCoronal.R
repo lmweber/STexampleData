@@ -126,10 +126,12 @@ col_data <- df_barcodes
 rownames(col_data) <- df_barcodes$barcode_id
 
 # spatial data
-# add custom "x_coord" and "y_coord" with flipped/reversed coordinates for Visium platform
 spatial_data <- df_tisspos_ord[, c("barcode_id", "in_tissue")]
+# flip x and y coordinates and reverse y scale to match orientation of images
 spatial_data$x_coord <- df_tisspos_ord$pxl_row_in_fullres
-spatial_data$y_coord <- -1 * df_tisspos_ord$pxl_col_in_fullres + max(df_tisspos_ord$pxl_col_in_fullres) + 1
+y_coord_tmp <- df_tisspos_ord$pxl_col_in_fullres
+y_coord_tmp <- (-1 * y_coord_tmp) + min(y_coord_tmp) + max(y_coord_tmp)
+spatial_data$y_coord <- y_coord_tmp
 # note: column "in_tissue" must be logical
 spatial_data$in_tissue <- as.logical(spatial_data$in_tissue)
 rownames(spatial_data) <- df_tisspos_ord$barcode_id

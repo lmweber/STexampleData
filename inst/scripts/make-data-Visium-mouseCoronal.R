@@ -128,6 +128,7 @@ rownames(col_data) <- df_barcodes$barcode_id
 # spatial data
 spatial_data <- df_tisspos_ord[, c("barcode_id", "in_tissue")]
 # flip x and y coordinates and reverse y scale to match orientation of images
+# note: for this dataset, also need to add 'min(y_coord) + max(y_coord)'
 spatial_data$x_coord <- df_tisspos_ord$pxl_row_in_fullres
 y_coord_tmp <- df_tisspos_ord$pxl_col_in_fullres
 y_coord_tmp <- (-1 * y_coord_tmp) + min(y_coord_tmp) + max(y_coord_tmp)

@@ -132,7 +132,7 @@ spatial_data$x_coord <- df_tisspos_ord$pxl_row_in_fullres
 y_coord_tmp <- df_tisspos_ord$pxl_col_in_fullres
 y_coord_tmp <- (-1 * y_coord_tmp) + min(y_coord_tmp) + max(y_coord_tmp)
 spatial_data$y_coord <- y_coord_tmp
-# note: column "in_tissue" must be logical
+# note: column 'in_tissue' must be logical
 spatial_data$in_tissue <- as.logical(spatial_data$in_tissue)
 rownames(spatial_data) <- df_tisspos_ord$barcode_id
 
@@ -140,13 +140,13 @@ rownames(spatial_data) <- df_tisspos_ord$barcode_id
 # keep columns with raw coordinates (may be useful for some users)
 col_data_additional <- df_tisspos_ord[, c("array_row", "array_col", "pxl_col_in_fullres", "pxl_row_in_fullres")]
 rownames(col_data_additional) <- df_tisspos_ord$barcode_id
+stopifnot(nrow(col_data) == nrow(col_data_additional))
+stopifnot(all(rownames(col_data) == rownames(col_data_additional)))
 col_data <- cbind(col_data, col_data_additional)
 
 # checks
-stopifnot(all(rownames(col_data) == rownames(spatial_data)))
-stopifnot(all(rownames(col_data) == rownames(col_data_additional)))
 stopifnot(nrow(col_data) == nrow(spatial_data))
-stopifnot(nrow(col_data) == nrow(col_data_additional))
+stopifnot(all(rownames(col_data) == rownames(spatial_data)))
 
 # image data
 # both low and high resolution images from Space Ranger

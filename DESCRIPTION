@@ -1,4 +1,4 @@
-Package: STdata
+Package: STexampleData
 Version: 0.0.1
 Title: Collection of spatially resolved transcriptomics datasets in SpatialExperiment 
     Bioconductor object format
@@ -7,8 +7,8 @@ Description: Collection of spatially resolved transcriptomics datasets in Spatia
     other purposes. The datasets have been sourced from various publicly available 
     sources, and cover several technological platforms.
 Authors@R: person("Lukas M.", "Weber", email = "lukas.weber.edu@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3282-1730"))
-URL: https://github.com/lmweber/STdata
-BugReports: https://github.com/lmweber/STdata/issues
+URL: https://github.com/lmweber/STexampleData
+BugReports: https://github.com/lmweber/STexampleData/issues
 License: MIT + file LICENSE
 biocViews:
     SingleCell

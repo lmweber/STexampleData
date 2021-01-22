@@ -18,7 +18,7 @@ load_data(dataset_name, path = "tmp", delete = TRUE)
 SpatialExperiment object
 }
 \description{
-Function to load data objects from STdata package
+Function to load data objects from STexampleData package
 }
 \details{
 Function to load data objects from Dropbox links (until package is moved to

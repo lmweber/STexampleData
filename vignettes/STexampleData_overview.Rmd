@@ -1,13 +1,13 @@
 ---
-title: "STdata package overview"
+title: "STexampleData package overview"
 author: 
   - name: Lukas M. Weber
     affiliation: "Johns Hopkins Bloomberg School of Public Health"
-package: STdata
+package: STexampleData
 output: 
   BiocStyle::html_document
 vignette: >
-  %\VignetteIndexEntry{STdata package overview}
+  %\VignetteIndexEntry{STexampleData package overview}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-The `STdata` package provides access to a collection of spatially resolved transcriptomics datasets, which have been formatted into the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor object class.
+The `STexampleData` package provides access to a collection of spatially resolved transcriptomics datasets, which have been formatted into the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor object class.
 
 These datasets have been collected from various publicly available sources, and cover several technological platforms. We provide them in the form of `SpatialExperiments` objects to make them easier to access, so that we and others can use them for examples, demonstrations, tutorials, and other purposes.
 
@@ -46,7 +46,7 @@ The following examples show how to load the example datasets as `SpatialExperime
 
 ```{r, message=FALSE}
 library(SpatialExperiment)
-library(STdata)
+library(STexampleData)
 ```
 
 

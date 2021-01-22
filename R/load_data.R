@@ -1,6 +1,6 @@
 #' Load data
 #' 
-#' Function to load data objects from STdata package
+#' Function to load data objects from STexampleData package
 #' 
 #' Function to load data objects from Dropbox links (until package is moved to
 #' Bioconductor's ExperimentHub).

@@ -1,6 +1,6 @@
-# STdata
+# STexampleData
 
-[![R build status](https://github.com/lmweber/STdata/workflows/R-CMD-check/badge.svg)](https://github.com/lmweber/STdata/actions)
+[![R build status](https://github.com/lmweber/STexampleData/workflows/R-CMD-check/badge.svg)](https://github.com/lmweber/STexampleData/actions)
 
 Collection of spatially resolved transcriptomics datasets in [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor object format.
 
@@ -16,7 +16,7 @@ Currently, the package is available from GitHub. This will be moved to Bioconduc
 To install from GitHub including vignettes, use the following options:
 
 ```
-remotes::install_github("lmweber/STdata", build_vignettes = TRUE, force = TRUE)
+remotes::install_github("lmweber/STexampleData", build_vignettes = TRUE, force = TRUE)
 ```
 
 
@@ -25,6 +25,6 @@ remotes::install_github("lmweber/STdata", build_vignettes = TRUE, force = TRUE)
 To view the vignette from your local installation, use the following R code:
 
 ```
-vignette("STdata_overview", package = "STdata")
+vignette("STexampleData_overview", package = "STexampleData")
 ```
 

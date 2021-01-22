@@ -23,7 +23,7 @@ library(tidyverse)
 
 # data files downloaded and saved locally from links at https://marionilab.cruk.cam.ac.uk/SpatialMouseAtlas/
 
-dir_data <- "~/data/STdata/SpatialMouseAtlas2020"
+dir_data <- "~/data/STexampleData/SpatialMouseAtlas2020"
 
 # contains cell-level info
 metadata <- readRDS(file.path(dir_data, "metadata.Rds"))
@@ -133,5 +133,5 @@ spe
 # Save data object
 # ----------------
 
-save(spe, file = "~/Dropbox/STdata/seqFISH_mouseEmbryo.RData")
+save(spe, file = "~/Dropbox/STexampleData/seqFISH_mouseEmbryo.RData")
 

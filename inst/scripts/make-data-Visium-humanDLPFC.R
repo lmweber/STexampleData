@@ -34,7 +34,7 @@ library(dplyr)
 
 # data files downloaded and saved locally from links above (and/or JHPCE cluster)
 
-dir_data <- "~/data/STdata/spatialLIBD"
+dir_data <- "~/data/STexampleData/spatialLIBD"
 
 # barcodes
 file_barcodes <- file.path(dir_data, "JHPCE", "151673_raw_feature_bc_matrix__barcodes.tsv.gz")
@@ -218,5 +218,5 @@ spe
 # Save data object
 # ----------------
 
-save(spe, file = "~/Dropbox/STdata/Visium_humanDLPFC.RData")
+save(spe, file = "~/Dropbox/STexampleData/Visium_humanDLPFC.RData")
 

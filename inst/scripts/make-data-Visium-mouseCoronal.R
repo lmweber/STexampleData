@@ -182,5 +182,5 @@ unlink("tmp", recursive = TRUE)
 # Save data object
 # ----------------
 
-save(spe, file = "~/Dropbox/STdata/Visium_mouseCoronal.RData")
+save(spe, file = "~/Dropbox/STexampleData/Visium_mouseCoronal.RData")
 

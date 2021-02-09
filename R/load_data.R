@@ -32,11 +32,11 @@ load_data <- function(dataset_name, path = "tmp", delete = TRUE) {
   
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
   if (dataset_name == "Visium_humanDLPFC") {
-    url <- "https://www.dropbox.com/s/kqsj7781c06vogh/Visium_humanDLPFC.RData?dl=1"
+    url <- "https://www.dropbox.com/s/frsao8a9s4nqlzi/Visium_humanDLPFC.RData?dl=1"
   } else if (dataset_name == "Visium_mouseCoronal") {
-    url <- "https://www.dropbox.com/s/0i3oow5m0qb3g51/Visium_mouseCoronal.RData?dl=1"
+    url <- "https://www.dropbox.com/s/pkpo2owiuknwl1w/Visium_mouseCoronal.RData?dl=1"
   } else if (dataset_name == "seqFISH_mouseEmbryo") {
-    url <- "https://www.dropbox.com/s/bit9odxqw6ugbuf/seqFISH_mouseEmbryo.RData?dl=1"
+    url <- "https://www.dropbox.com/s/2bhtzkpupogprqa/seqFISH_mouseEmbryo.RData?dl=1"
   }
   
   fn <- file.path(path, gsub("\\?.*$", "", basename(url)))

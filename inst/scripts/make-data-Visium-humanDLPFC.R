@@ -105,8 +105,7 @@ df_truth <- colData(sce_sub)[, cols_keep]
 colnames(df_truth)[colnames(df_truth) == "barcode"] <- "barcode_id"
 colnames(df_truth)[colnames(df_truth) == "layer_guess_reordered"] <- "ground_truth"
 # add custom sample ID
-# note: currently not working with custom sample ID
-#df_truth$sample_id <- "sample_151673"
+df_truth$sample_id <- "sample_151673"
 
 # note: contains only spots over tissue
 dim(df_truth)
@@ -173,12 +172,10 @@ col_data <- df_truth_matched
 spatial_data <- df_tisspos_ord[, c("barcode_id", "in_tissue")]
 # flip x and y coordinates and reverse y scale to match orientation of images
 # note: for this dataset, also need to add '1600 + max(y_coord)'
-spatial_data$x_coord <- df_tisspos_ord$pxl_row_in_fullres
+spatial_data$x <- df_tisspos_ord$pxl_row_in_fullres
 y_coord_tmp <- df_tisspos_ord$pxl_col_in_fullres
 y_coord_tmp <- (-1 * y_coord_tmp) + 1600 + max(y_coord_tmp)
-spatial_data$y_coord <- y_coord_tmp
-# note: column 'in_tissue' must be logical
-spatial_data$in_tissue <- as.logical(spatial_data$in_tissue)
+spatial_data$y <- y_coord_tmp
 rownames(spatial_data) <- df_tisspos_ord$barcode_id
 
 # additional column data
@@ -196,19 +193,21 @@ stopifnot(all(rownames(col_data) == rownames(spatial_data)))
 # both low and high resolution images from Space Ranger
 img_data <- readImgData(
   path = file.path(dir_data, "JHPCE"), 
-  sample_id = "Sample01", 
+  sample_id = "sample_151673", 
   imageSources = c(img_paths["tissue_lowres_image"], img_paths["tissue_hires_image"]), 
   scaleFactors = file_scale_factors, 
   load = TRUE
 )
 
 # create SpatialExperiment
+# note: currently need to add sample ID manually
 spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
   colData = col_data, 
-  spatialCoords = spatial_data, 
-  imgData = img_data
+  spatialData = spatial_data, 
+  imgData = img_data, 
+  sample_id = "sample_151673"
 )
 
 spe
@@ -218,5 +217,9 @@ spe
 # Save data object
 # ----------------
 
-save(spe, file = "~/Dropbox/STexampleData/Visium_humanDLPFC.RData")
+# on JHPCE cluster
+save(spe, file = "~/data/Dropbox/Visium_humanDLPFC.RData")
+
+# on laptop
+#save(spe, file = "~/Dropbox/STexampleData/Visium_humanDLPFC.RData")
 

@@ -100,8 +100,8 @@ head(col_data)
 
 # store segmentation vertices in colData as SplitDataFrameList (list of data frames)
 seg_verts <- SplitDataFrameList(
-  x_coord = col_data$segmentation_vertices_x_global_affine, 
-  y_coord = col_data$segmentation_vertices_y_global_affine, 
+  x = col_data$segmentation_vertices_x_global_affine, 
+  y = col_data$segmentation_vertices_y_global_affine, 
   cbindArgs = TRUE
 )
 # remove previous format and store SplitDataFrameList in colData
@@ -111,7 +111,7 @@ col_data <- cbind(col_data, segmentation_vertices = I(seg_verts))
 
 # spatial data: store x-y coordinates per cell in spatialData
 spatial_data <- metadata_sub[, c("uniqueID", "x_global_affine", "y_global_affine")]
-colnames(spatial_data) <- c("cell_id", "x_coord", "y_coord")
+colnames(spatial_data) <- c("cell_id", "x", "y")
 head(spatial_data)
 
 stopifnot(nrow(spatial_data) == nrow(col_data))
@@ -133,5 +133,9 @@ spe
 # Save data object
 # ----------------
 
-save(spe, file = "~/Dropbox/STexampleData/seqFISH_mouseEmbryo.RData")
+# on JHPCE cluster
+save(spe, file = "~/data/Dropbox/seqFISH_mouseEmbryo.RData")
+
+# on laptop
+#save(spe, file = "~/Dropbox/STexampleData/seqFISH_mouseEmbryo.RData")
 

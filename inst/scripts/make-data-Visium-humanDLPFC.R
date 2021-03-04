@@ -1,6 +1,6 @@
 ###############################################################
 # Script to create Visium human DLPFC data object from raw data
-# Lukas Weber, December 2020
+# Lukas Weber, March 2021
 ###############################################################
 
 # For more details on this dataset see:
@@ -156,6 +156,9 @@ head(df_truth_matched)
 stopifnot(nrow(df_barcodes) == nrow(df_truth_matched))
 stopifnot(all(df_barcodes$barcode_id == df_truth_matched$barcode_id))
 
+# replace sample ID column to include all spots (including not over tissue)
+df_truth_matched$sample_id <- "sample_151673"
+
 
 # ------------------------
 # Create SpatialExperiment
@@ -200,14 +203,12 @@ img_data <- readImgData(
 )
 
 # create SpatialExperiment
-# note: currently need to add sample ID manually
 spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
   colData = col_data, 
   spatialData = spatial_data, 
-  imgData = img_data, 
-  sample_id = "sample_151673"
+  imgData = img_data
 )
 
 spe

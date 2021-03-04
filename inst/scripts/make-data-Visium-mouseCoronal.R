@@ -1,6 +1,6 @@
 #################################################################
 # Script to create Visium mouse coronal data object from raw data
-# Lukas Weber, December 2020
+# Lukas Weber, March 2021
 #################################################################
 
 # for more details on raw data see:
@@ -121,8 +121,7 @@ rownames(row_data) <- df_features$gene_id
 # column data
 col_data <- df_barcodes
 # add custom sample ID
-# note: currently not working with custom sample ID
-#col_data$sample_id <- "sample_01"
+col_data$sample_id <- "sample_01"
 rownames(col_data) <- df_barcodes$barcode_id
 
 # spatial data

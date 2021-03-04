@@ -1,6 +1,6 @@
 ####################################################
 # Script to create seqFISH data object from raw data
-# Lukas Weber, December 2020
+# Lukas Weber, March 2021
 ####################################################
 
 # link to paper (Lohoff and Ghazanfar et al. 2020):
@@ -14,7 +14,7 @@
 
 library(SpatialExperiment)
 library(BumpyMatrix)
-library(tidyverse)
+library(tidyr)
 
 
 # ---------

@@ -109,3 +109,11 @@ colData(spe)
 spatialData(spe)
 ```
 
+
+# Generating objects from raw data files
+
+For reference, we include code scripts to generate the `SpatialExperiment` objects from the raw data files.
+
+These scripts are saved in `/inst/scripts/` in the source code of the `STexampleData` package. The scripts include references and links to the raw data files from the original sources for each dataset.
+
+

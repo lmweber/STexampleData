@@ -179,9 +179,5 @@ unlink("tmp", recursive = TRUE)
 # Save data object
 # ----------------
 
-# on JHPCE cluster
-save(spe, file = "~/data/Dropbox/Visium_mouseCoronal.RData")
-
-# on laptop
-#save(spe, file = "~/Dropbox/STexampleData/Visium_mouseCoronal.RData")
+saveRDS(spe, file = "Visium_mouseCoronal.rds")
 

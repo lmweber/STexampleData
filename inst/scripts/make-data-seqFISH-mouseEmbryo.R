@@ -133,9 +133,5 @@ spe
 # Save data object
 # ----------------
 
-# on JHPCE cluster
-save(spe, file = "~/data/Dropbox/seqFISH_mouseEmbryo.RData")
-
-# on laptop
-#save(spe, file = "~/Dropbox/STexampleData/seqFISH_mouseEmbryo.RData")
+saveRDS(spe, file = "seqFISH_mouseEmbryo.rds")
 

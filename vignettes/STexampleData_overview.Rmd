@@ -23,7 +23,7 @@ The `STexampleData` package provides access to a collection of spatially resolve
 
 These datasets have been collected from various publicly available sources, and cover several technological platforms. We provide them in the form of `SpatialExperiment` objects to make them easier to access, so that we and others can use them for examples, demonstrations, tutorials, and other purposes.
 
-The `SpatialExperiment` class is an extension of `SingleCellExperiment`, adapted for the properties of spatially resolved transcriptomics data. For more details, see the `SpatialExperiment` vignette.
+The `SpatialExperiment` class is an extension of `SingleCellExperiment`, adapted for the properties of spatially resolved transcriptomics data. For more details, see the `SpatialExperiment` documentation.
 
 
 # Installation
@@ -52,19 +52,36 @@ The package contains the following datasets:
 The following examples show how to load the example datasets as `SpatialExperiment` objects in an R session.
 
 
-## Load packages
+## Access ExperimentHub
 
 ```{r, message=FALSE}
-library(STexampleData)
-library(SpatialExperiment)
+library(ExperimentHub)
+
+# create ExperimentHub instance
+eh <- ExperimentHub()
+
+# query STexampleData datasets
+myfiles <- query(eh, "STexampleData")
+myfiles
+
+# metadata
+md <- as.data.frame(mcols(myfiles))
+md
 ```
 
 
 ## Visium_humanDLPFC
 
 ```{r, message=FALSE}
+library(STexampleData)
+library(SpatialExperiment)
+
 # load object
-spe <- load_data("Visium_humanDLPFC")
+spe <- Visium_humanDLPFC()
+# alternatively: using ExperimentHub query
+#spe <- myfiles[[1]]
+# alternatively: using ExperimentHub ID
+#spe <- myfiles[["EHXXXX"]]
 
 # inspect object
 spe
@@ -81,7 +98,11 @@ imgData(spe)
 
 ```{r, message=FALSE}
 # load object
-spe <- load_data("Visium_mouseCoronal")
+spe <- Visium_mouseCoronal()
+# alternatively: using ExperimentHub query
+#spe <- myfiles[[2]]
+# alternatively: using ExperimentHub ID
+#spe <- myfiles[["EHXXXX"]]
 
 # inspect object
 spe
@@ -98,7 +119,11 @@ imgData(spe)
 
 ```{r, message=FALSE}
 # load object
-spe <- load_data("seqFISH_mouseEmbryo")
+spe <- seqFISH_mouseEmbryo()
+# alternatively: using ExperimentHub query
+#spe <- myfiles[[3]]
+# alternatively: using ExperimentHub ID
+#spe <- myfiles[["EHXXXX"]]
 
 # inspect object
 spe

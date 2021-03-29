@@ -218,9 +218,5 @@ spe
 # Save data object
 # ----------------
 
-# on JHPCE cluster
-save(spe, file = "~/data/Dropbox/Visium_humanDLPFC.RData")
-
-# on laptop
-#save(spe, file = "~/Dropbox/STexampleData/Visium_humanDLPFC.RData")
+saveRDS(spe, file = "Visium_humanDLPFC.rds")
 

@@ -16,10 +16,11 @@ biocViews:
     ReproducibleResearch, 
     ExpressionData, 
     SingleCellData
-Depends: R (>= 4.0.0)
+Depends: 
+    R (>= 4.0.0), 
+    ExperimentHub, 
+    SpatialExperiment
 Imports:
-    SpatialExperiment, 
-    SingleCellExperiment, 
     utils
 VignetteBuilder: knitr
 Suggests:

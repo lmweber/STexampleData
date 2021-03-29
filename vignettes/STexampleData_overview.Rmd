@@ -2,7 +2,7 @@
 title: "STexampleData package overview"
 author: 
   - name: Lukas M. Weber
-    affiliation: "Johns Hopkins Bloomberg School of Public Health"
+    affiliation: "Johns Hopkins Bloomberg School of Public Health, Baltimore, MD, USA"
 package: STexampleData
 output: 
   BiocStyle::html_document
@@ -21,20 +21,30 @@ knitr::opts_chunk$set(echo = TRUE)
 
 The `STexampleData` package provides access to a collection of spatially resolved transcriptomics datasets, which have been formatted into the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor object class.
 
-These datasets have been collected from various publicly available sources, and cover several technological platforms. We provide them in the form of `SpatialExperiments` objects to make them easier to access, so that we and others can use them for examples, demonstrations, tutorials, and other purposes.
+These datasets have been collected from various publicly available sources, and cover several technological platforms. We provide them in the form of `SpatialExperiment` objects to make them easier to access, so that we and others can use them for examples, demonstrations, tutorials, and other purposes.
 
-The `SpatialExperiment` class is an extension of `SingleCellExperiment`, adapted for the properties of spatially resolved transcriptomics data.
+The `SpatialExperiment` class is an extension of `SingleCellExperiment`, adapted for the properties of spatially resolved transcriptomics data. For more details, see the `SpatialExperiment` vignette.
+
+
+# Installation
+
+To install the `STexampleData` package from Bioconductor:
+
+```{r, eval=FALSE}
+install.packages("BiocManager")
+BiocManager::install("STexampleData")
+```
 
 
 # Datasets
 
 The package contains the following datasets:
 
-- `Visium_humanDLPFC` (10x Genomics Visium): A single sample (sample 151673) of human brain dorsolateral prefrontal cortex (DLPFC) in the human brain, measured using the 10x Genomics Visium platform. This is a subset of the full dataset containing 12 samples from 3 neurotypical donors, published by [Maynard and Collado-Torres et al. 2020](https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1). The original dataset is also available from the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) Bioconductor package.
+- `Visium_humanDLPFC` (10x Genomics Visium): A single sample (sample 151673) of human brain dorsolateral prefrontal cortex (DLPFC) in the human brain, measured using the 10x Genomics Visium platform. This is a subset of the full dataset containing 12 samples from 3 neurotypical donors, published by [Maynard and Collado-Torres et al. (2021)](https://www.nature.com/articles/s41593-020-00787-0). The full dataset is available from the [spatialLIBD](http://bioconductor.org/packages/spatialLIBD) Bioconductor package.
 
 - `Visium_mouseCoronal` (10x Genomics Visium): A single coronal section from the mouse brain, spanning one hemisphere. This dataset was previously released by 10x Genomics on their [website](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain).
 
-- `seqFISH_mouseEmbryo` (seqFISH): A subset of cells (embryo 1, z-slice 2) from a previously published dataset investigating mouse embryogenesis by [Lohoff and Ghazanfar et al. 2020](https://www.biorxiv.org/content/10.1101/2020.11.20.391896v1), generated using the seqFISH platform. The full dataset is also [available online](https://marionilab.cruk.cam.ac.uk/SpatialMouseAtlas/).
+- `seqFISH_mouseEmbryo` (seqFISH): A subset of cells (embryo 1, z-slice 2) from a previously published dataset investigating mouse embryogenesis by [Lohoff and Ghazanfar et al. (2020)](https://www.biorxiv.org/content/10.1101/2020.11.20.391896v1), generated using the seqFISH platform. The full dataset is [available online](https://marionilab.cruk.cam.ac.uk/SpatialMouseAtlas/).
 
 
 # Load data
@@ -45,8 +55,8 @@ The following examples show how to load the example datasets as `SpatialExperime
 ## Load packages
 
 ```{r, message=FALSE}
-library(SpatialExperiment)
 library(STexampleData)
+library(SpatialExperiment)
 ```
 
 

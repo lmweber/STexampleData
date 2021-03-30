@@ -56,7 +56,9 @@ The following examples show how to load the example datasets as `SpatialExperime
 
 ```{r, message=FALSE}
 library(ExperimentHub)
+```
 
+```{r}
 # create ExperimentHub instance
 eh <- ExperimentHub()
 
@@ -66,7 +68,6 @@ myfiles
 
 # metadata
 md <- as.data.frame(mcols(myfiles))
-md
 ```
 
 
@@ -75,15 +76,17 @@ md
 ```{r, message=FALSE}
 library(STexampleData)
 library(SpatialExperiment)
+```
 
+```{r}
 # load object
 spe <- Visium_humanDLPFC()
 # alternatively: using ExperimentHub query
-#spe <- myfiles[[1]]
+# spe <- myfiles[[1]]
 # alternatively: using ExperimentHub ID
-#spe <- myfiles[["EHXXXX"]]
+# spe <- myfiles[["EH5443"]]
 
-# inspect object
+# check object
 spe
 dim(spe)
 assayNames(spe)
@@ -100,18 +103,12 @@ imgData(spe)
 # load object
 spe <- Visium_mouseCoronal()
 # alternatively: using ExperimentHub query
-#spe <- myfiles[[2]]
+# spe <- myfiles[[2]]
 # alternatively: using ExperimentHub ID
-#spe <- myfiles[["EHXXXX"]]
+# spe <- myfiles[["EH5444"]]
 
-# inspect object
+# check object
 spe
-dim(spe)
-assayNames(spe)
-rowData(spe)
-colData(spe)
-spatialData(spe)
-imgData(spe)
 ```
 
 
@@ -121,17 +118,12 @@ imgData(spe)
 # load object
 spe <- seqFISH_mouseEmbryo()
 # alternatively: using ExperimentHub query
-#spe <- myfiles[[3]]
+# spe <- myfiles[[3]]
 # alternatively: using ExperimentHub ID
-#spe <- myfiles[["EHXXXX"]]
+# spe <- myfiles[["EH5445"]]
 
-# inspect object
+# check object
 spe
-dim(spe)
-assayNames(spe)
-rowData(spe)
-colData(spe)
-spatialData(spe)
 ```
 
 

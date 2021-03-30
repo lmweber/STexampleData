@@ -13,9 +13,12 @@ BugReports: https://github.com/lmweber/STexampleData/issues
 License: MIT + file LICENSE
 biocViews:
     ExperimentHub, 
+    ExperimentData, 
     ReproducibleResearch, 
     ExpressionData, 
-    SingleCellData
+    SingleCellData, 
+    Homo_sapiens_Data, 
+    Mus_musculus_Data
 Depends: 
     ExperimentHub, 
     SpatialExperiment

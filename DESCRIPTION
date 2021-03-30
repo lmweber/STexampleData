@@ -17,7 +17,6 @@ biocViews:
     ExpressionData, 
     SingleCellData
 Depends: 
-    R (>= 4.0.0), 
     ExperimentHub, 
     SpatialExperiment
 Imports:

@@ -50,10 +50,9 @@ from a dataset investigating mouse embryogenesis by Lohoff and Ghazanfar et al.
 (2020), generated using the seqFISH platform. The full dataset is available from 
 the original publication.
 }
-
+}
 \examples{
 # load using dataset name
 spe <- Visium_humanDLPFC()
 spe
-}
 }

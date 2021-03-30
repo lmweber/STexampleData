@@ -34,7 +34,6 @@ details, see the \code{SpatialExperiment} documentation.
 The \code{STexampleData} package contains the following datasets:
 
 \itemize{
-
 \item Visium_humanDLPFC (10x Genomics Visium): A single sample (sample 151673) 
 of human brain dorsolateral prefrontal cortex (DLPFC) in the human brain, 
 measured using the 10x Genomics Visium platform. This is a subset of the full 
@@ -50,5 +49,5 @@ platform. This dataset was publicly released by 10x Genomics.
 from a dataset investigating mouse embryogenesis by Lohoff and Ghazanfar et al. 
 (2020), generated using the seqFISH platform. The full dataset is available from 
 the original publication.
-
+}
 }

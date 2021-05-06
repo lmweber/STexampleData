@@ -1,6 +1,6 @@
 #################################################################
 # Script to create Visium mouse coronal data object from raw data
-# Lukas Weber, March 2021
+# Lukas Weber, May 2021
 #################################################################
 
 # for more details on raw data see:
@@ -60,7 +60,7 @@ stopifnot(ncol(counts) == nrow(df_barcodes))
 # spatial coordinates
 file_tisspos <- file.path("tmp", "spatial", "tissue_positions_list.csv")
 df_tisspos <- read.csv(file_tisspos, header = FALSE, 
-                       col.names=c("barcode_id", "in_tissue", "array_row", "array_col", 
+                       col.names=c("barcode_id", "in_tissue", "array_col", "array_row", 
                                    "pxl_col_in_fullres", "pxl_row_in_fullres"))
 
 # check dimensions
@@ -115,42 +115,30 @@ head(df_tisspos_ord)
 # ------------------------
 
 # row data
-row_data <- df_features
+row_data <- DataFrame(df_features)
 rownames(row_data) <- df_features$gene_id
 
 # column data
-col_data <- df_barcodes
-# add custom sample ID
-col_data$sample_id <- "sample_01"
+# include column of sample IDs
+col_data <- DataFrame(sample_id = rep("sample01", nrow(df_barcodes)))
 rownames(col_data) <- df_barcodes$barcode_id
 
 # spatial data
-spatial_data <- df_tisspos_ord[, c("barcode_id", "in_tissue")]
-# flip x and y coordinates and reverse y scale to match orientation of images
-# note: for this dataset, also need to add 'min(y_coord) + max(y_coord)'
-spatial_data$x <- df_tisspos_ord$pxl_row_in_fullres
-y_coord_tmp <- df_tisspos_ord$pxl_col_in_fullres
-y_coord_tmp <- (-1 * y_coord_tmp) + min(y_coord_tmp) + max(y_coord_tmp)
-spatial_data$y <- y_coord_tmp
+spatial_data <- DataFrame(df_tisspos_ord)
 rownames(spatial_data) <- df_tisspos_ord$barcode_id
+# include duplicate spatial coordinates with original column names in colData
+col_data <- cbind(col_data, spatial_data[, c("pxl_col_in_fullres", "pxl_row_in_fullres")])
+# use default column names for spatial coordinates in spatialData
+colnames(spatial_data)[c(5, 6)] <- c("x", "y")
 
-# additional column data
-# keep columns with raw coordinates (may be useful for some users)
-col_data_additional <- df_tisspos_ord[, c("array_row", "array_col", "pxl_col_in_fullres", "pxl_row_in_fullres")]
-rownames(col_data_additional) <- df_tisspos_ord$barcode_id
-stopifnot(nrow(col_data) == nrow(col_data_additional))
-stopifnot(all(rownames(col_data) == rownames(col_data_additional)))
-col_data <- cbind(col_data, col_data_additional)
-
-# checks
-stopifnot(nrow(col_data) == nrow(spatial_data))
-stopifnot(all(rownames(col_data) == rownames(spatial_data)))
+# spatial coordinates
+spatial_coords <- as.matrix(spatial_data[, c("x", "y")])
 
 # image data
-# both low and high resolution images from Space Ranger
+# low and high resolution images from Space Ranger
 img_data <- readImgData(
   path = file.path("tmp", "spatial"), 
-  sample_id = "sample_01", 
+  sample_id = "sample01", 
   imageSources = c(img_paths["tissue_lowres_image"], img_paths["tissue_hires_image"]), 
   scaleFactors = file_scale_factors, 
   load = TRUE
@@ -162,6 +150,7 @@ spe <- SpatialExperiment(
   rowData = row_data, 
   colData = col_data, 
   spatialData = spatial_data, 
+  spatialCoords = spatial_coords, 
   imgData = img_data
 )
 

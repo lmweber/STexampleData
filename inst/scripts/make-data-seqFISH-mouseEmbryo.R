@@ -1,6 +1,6 @@
 ####################################################
 # Script to create seqFISH data object from raw data
-# Lukas Weber, March 2021
+# Lukas Weber, May 2021
 ####################################################
 
 # link to paper (Lohoff and Ghazanfar et al. 2020):
@@ -85,18 +85,17 @@ bumpy_assay <- splitAsBumpyMatrix(mRNA_sub[, bumpy_cols], row = mRNA_sub$geneID,
 # remove cells/columns missing from counts matrix and match column order
 bumpy_assay <- bumpy_assay[, colnames(counts_sub)]
 
+dim(bumpy_assay)
 stopifnot(ncol(counts_sub) == ncol(bumpy_assay))
 stopifnot(all(colnames(counts_sub) == colnames(bumpy_assay)))
 
 # row data
-row_data <- data.frame(gene_name = rownames(counts_sub))
-head(row_data)
+row_data <- DataFrame(gene_name = rownames(counts_sub))
+rownames(row_data) <- rownames(counts_sub)
 
 # column data
 stopifnot(all(metadata_sub$uniqueID == colnames(counts_sub)))
-col_data <- metadata_sub
-colnames(col_data)[1] <- "cell_id"
-head(col_data)
+col_data <- DataFrame(metadata_sub)
 
 # store segmentation vertices in colData as SplitDataFrameList (list of data frames)
 seg_verts <- SplitDataFrameList(
@@ -106,15 +105,19 @@ seg_verts <- SplitDataFrameList(
 )
 # remove previous format and store SplitDataFrameList in colData
 col_data <- col_data[, 1:12]
-col_data <- DataFrame(col_data)
 col_data <- cbind(col_data, segmentation_vertices = I(seg_verts))
 
-# spatial data: store x-y coordinates per cell in spatialData
-spatial_data <- metadata_sub[, c("uniqueID", "x_global_affine", "y_global_affine")]
-colnames(spatial_data) <- c("cell_id", "x", "y")
-head(spatial_data)
+# add sample IDs to colData
+sample_ids <- paste(col_data$embryo, paste0("z", col_data$z), sep = "_")
+stopifnot(length(unique(sample_ids)) == 1)
+col_data$sample_id <- sample_ids
 
-stopifnot(nrow(spatial_data) == nrow(col_data))
+# spatial data: store x-y coordinates per cell in spatialData
+spatial_data <- DataFrame(metadata_sub[, c("uniqueID", "x_global_affine", "y_global_affine")])
+colnames(spatial_data) <- c("cell_id", "x", "y")
+
+# spatial coordinates
+spatial_coords <- as.matrix(spatial_data[, c("x", "y")])
 
 # create SpatialExperiment
 spe <- SpatialExperiment(
@@ -123,7 +126,8 @@ spe <- SpatialExperiment(
     molecules = bumpy_assay), 
   rowData = row_data, 
   colData = col_data, 
-  spatialData = spatial_data
+  spatialData = spatial_data, 
+  spatialCoords = spatial_coords
 )
 
 spe

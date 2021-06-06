@@ -92,7 +92,7 @@ dim(spe)
 assayNames(spe)
 rowData(spe)
 colData(spe)
-spatialData(spe, spatialCoords = TRUE)
+spatialData(spe)
 head(spatialCoords(spe))
 imgData(spe)
 ```

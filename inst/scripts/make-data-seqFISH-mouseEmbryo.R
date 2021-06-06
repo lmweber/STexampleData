@@ -1,6 +1,6 @@
 ####################################################
 # Script to create seqFISH data object from raw data
-# Lukas Weber, May 2021
+# Lukas Weber, updated June 2021
 ####################################################
 
 # link to paper (Lohoff and Ghazanfar et al. 2020):
@@ -113,11 +113,14 @@ stopifnot(length(unique(sample_ids)) == 1)
 col_data$sample_id <- sample_ids
 
 # spatial data: store x-y coordinates per cell in spatialData
+# (keep original column names for coordinates)
 spatial_data <- DataFrame(metadata_sub[, c("uniqueID", "x_global_affine", "y_global_affine")])
-colnames(spatial_data) <- c("cell_id", "x", "y")
+colnames(spatial_data)[1] <- c("cell_id")
 
 # spatial coordinates
-spatial_coords <- as.matrix(spatial_data[, c("x", "y")])
+# (use default column names for coordinates)
+spatial_coords <- as.matrix(metadata_sub[, c("x_global_affine", "y_global_affine")])
+colnames(spatial_coords) <- c("x", "y")
 
 # create SpatialExperiment
 spe <- SpatialExperiment(

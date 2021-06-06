@@ -1,6 +1,6 @@
 ###############################################################
 # Script to create Visium human DLPFC data object from raw data
-# Lukas Weber, May 2021
+# Lukas Weber, updated June 2021
 ###############################################################
 
 # For more details on this dataset see:
@@ -174,15 +174,16 @@ col_data <- DataFrame(df_truth_matched[, -1])
 rownames(col_data) <- df_truth_matched$barcode_id
 
 # spatial data
+# include duplicated columns of spatial coordinates with original column names
+# (for users who need these column names)
 spatial_data <- DataFrame(df_tisspos_ord)
 rownames(spatial_data) <- df_tisspos_ord$barcode_id
-# include duplicate spatial coordinates with original column names in colData
-col_data <- cbind(col_data, spatial_data[, c("pxl_col_in_fullres", "pxl_row_in_fullres")])
-# use default column names for spatial coordinates in spatialData
-colnames(spatial_data)[c(5, 6)] <- c("x", "y")
 
 # spatial coordinates
-spatial_coords <- as.matrix(spatial_data[, c("x", "y")])
+# use default column names 'x' and 'y'
+spatial_coords <- as.matrix(df_tisspos_ord[, c("pxl_col_in_fullres", "pxl_row_in_fullres")])
+colnames(spatial_coords) <- c("x", "y")
+rownames(spatial_coords) <- df_tisspos_ord$barcode_id
 
 # image data
 # low and high resolution images from Space Ranger

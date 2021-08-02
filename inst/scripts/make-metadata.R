@@ -33,7 +33,7 @@ df_Visium_humanDLPFC <- cbind(
   SourceUrl = "http://spatial.libd.org/spatialLIBD/", 
   Species = "Homo sapiens", 
   TaxonomyId = "9606", 
-  RDataPath = "STexampleData/Visium_humanDLPFC.rds", 
+  RDataPath = "STexampleData/3_13/Visium_humanDLPFC.rds", 
   stringsAsFactors = FALSE
 )
 
@@ -47,7 +47,7 @@ df_Visium_mouseCoronal <- cbind(
   SourceUrl = "https://support.10xgenomics.com/spatial-gene-expression/datasets", 
   Species = "Mus musculus", 
   TaxonomyId = "10090", 
-  RDataPath = "STexampleData/Visium_mouseCoronal.rds", 
+  RDataPath = "STexampleData/3_13/Visium_mouseCoronal.rds", 
   stringsAsFactors = FALSE
 )
 
@@ -62,7 +62,7 @@ df_seqFISH_mouseEmbryo <- cbind(
   SourceUrl = "https://marionilab.cruk.cam.ac.uk/SpatialMouseAtlas/", 
   Species = "Mus musculus", 
   TaxonomyId = "10090", 
-  RDataPath = "STexampleData/seqFISH_mouseEmbryo.rds", 
+  RDataPath = "STexampleData/3_13/seqFISH_mouseEmbryo.rds", 
   stringsAsFactors = FALSE
 )
 

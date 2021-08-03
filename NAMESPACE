@@ -1,3 +1,5 @@
+export(load_data)
+importFrom(utils,download.file)
 importFrom(utils, read.csv)
 importFrom(SpatialExperiment, SpatialExperiment)
 importFrom(ExperimentHub, createHubAccessors)

@@ -22,7 +22,7 @@ df_all <- data.frame(
 
 df_Visium_humanDLPFC <- cbind(
   df_all, 
-  Title = "Visium_humanDLPFC", 
+  Title = "Visium_humanDLPFC_3_13", 
   Description = paste0(
     "A single sample (sample 151673) of human brain dorsolateral prefrontal ", 
     "cortex (DLPFC) in the human brain, measured using the 10x Genomics Visium ", 
@@ -39,7 +39,7 @@ df_Visium_humanDLPFC <- cbind(
 
 df_Visium_mouseCoronal <- cbind(
   df_all, 
-  Title = "Visium_mouseCoronal", 
+  Title = "Visium_mouseCoronal_3_13", 
   Description = paste0(
     "A single coronal section from the mouse brain spanning one hemisphere, ", 
     "measured using the 10x Genomics Visium platform. This dataset was publicly ", 
@@ -53,7 +53,7 @@ df_Visium_mouseCoronal <- cbind(
 
 df_seqFISH_mouseEmbryo <- cbind(
   df_all, 
-  Title = "seqFISH_mouseEmbryo", 
+  Title = "seqFISH_mouseEmbryo_3_13", 
   Description = paste0(
     "A subset of cells (embryo 1, z-slice 2) from a dataset investigating mouse ", 
     "embryogenesis by Lohoff and Ghazanfar et al. (2020), generated using the ", 

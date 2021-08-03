@@ -40,7 +40,7 @@ load_data <- function(dataset_name, path = "tmp", delete = TRUE) {
   
   dir.create(path)
   download.file(url, fn, mode = "wb")
-  load(fn)
+  spe <- readRDS(fn)
   
   if (delete) {
     unlink(path, recursive = TRUE)

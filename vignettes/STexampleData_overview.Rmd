@@ -89,7 +89,7 @@ library(SpatialExperiment)
 spe <- load_data("Visium_humanDLPFC")
 
 # load object
-#spe <- Visium_humanDLPFC()
+# spe <- Visium_humanDLPFC()
 # alternatively: using ExperimentHub query
 # spe <- myfiles[[1]]
 # alternatively: using ExperimentHub ID
@@ -114,7 +114,7 @@ imgData(spe)
 spe <- load_data("Visium_mouseCoronal")
 
 # load object
-#spe <- Visium_mouseCoronal()
+# spe <- Visium_mouseCoronal()
 # alternatively: using ExperimentHub query
 # spe <- myfiles[[2]]
 # alternatively: using ExperimentHub ID
@@ -132,7 +132,7 @@ spe
 spe <- load_data("seqFISH_mouseEmbryo")
 
 # load object
-#spe <- seqFISH_mouseEmbryo()
+# spe <- seqFISH_mouseEmbryo()
 # alternatively: using ExperimentHub query
 # spe <- myfiles[[3]]
 # alternatively: using ExperimentHub ID

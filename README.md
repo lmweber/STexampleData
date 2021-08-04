@@ -1,19 +1,30 @@
 # STexampleData
 
-Collection of spatially resolved transcriptomics datasets in [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor format.
+The `STexampleData` package provides access to several spatially resolved transcriptomics datasets, which have been formatted into the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor class.
 
-These datasets have been collected from various publicly available sources, and cover several technological platforms. We provide them in the form of `SpatialExperiment` objects to make them easier to access, so that we and others can use them for examples, demonstrations, tutorials, and other purposes.
+These datasets have been collected from various publicly available sources, and cover several technological platforms.
 
-The `SpatialExperiment` class is an extension of `SingleCellExperiment`, adapted for the properties of spatially resolved transcriptomics data. For more details, see the `SpatialExperiment` documentation.
+We provide these datasets as `SpatialExperiment` objects to make them easier to access, so that we and others can use them for examples, demonstrations, tutorials, and other purposes.
+
+For more details, see the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) documentation or our [paper](https://www.biorxiv.org/content/10.1101/2021.01.27.428431v1).
 
 
 ## Installation
 
-The package is currently available from GitHub, and will be submitted to Bioconductor's ExperimentHub.
-
-To install the current version from GitHub:
+The latest version of the package can be installed from the `devel` version of Bioconductor:
 
 ```
-remotes::install_github("lmweber/STexampleData", ref = "non_EH_load_data", build_vignettes = TRUE)
+BiocManager::install("STexampleData", version = "devel")
 ```
+
+Alternatively, you can also install the latest version from GitHub:
+
+```
+remotes::install_github("lmweber/STexampleData", ref = "no_accessors", build_vignettes = TRUE)
+```
+
+
+## Citation
+
+[Righell D.\*, Weber L.M.\*, Crowell H.L.\*, Pardo B., Collado-Torres L., Ghazanfar S., Lun A.T.L., Hicks S.C.<sup>+</sup>, and Risso D.<sup>+</sup> (2021), *SpatialExperiment: infrastructure for spatially resolved transcriptomics data in R using Bioconductor*, bioRxiv](https://www.biorxiv.org/content/10.1101/2021.01.27.428431v1).
 

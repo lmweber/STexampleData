@@ -85,15 +85,13 @@ library(SpatialExperiment)
 ```
 
 ```{r}
-# load object using temporary function for Bioc 3.14
-spe <- load_data("Visium_humanDLPFC")
-
 # load object
-# spe <- Visium_humanDLPFC()
+spe <- Visium_humanDLPFC()
+
 # alternatively: using ExperimentHub query
 # spe <- myfiles[[1]]
 # alternatively: using ExperimentHub ID
-# spe <- myfiles[["EH5443"]]
+# spe <- myfiles[["EH6708"]]
 
 # check object
 spe
@@ -110,15 +108,13 @@ imgData(spe)
 ## Visium_mouseCoronal
 
 ```{r, message=FALSE}
-# load object using temporary function for Bioc 3.14
-spe <- load_data("Visium_mouseCoronal")
-
 # load object
-# spe <- Visium_mouseCoronal()
+spe <- Visium_mouseCoronal()
+
 # alternatively: using ExperimentHub query
 # spe <- myfiles[[2]]
 # alternatively: using ExperimentHub ID
-# spe <- myfiles[["EH5444"]]
+# spe <- myfiles[["EH6709"]]
 
 # check object
 spe
@@ -128,15 +124,13 @@ spe
 ## seqFISH_mouseEmbryo
 
 ```{r, message=FALSE}
-# load object using temporary function for Bioc 3.14
-spe <- load_data("seqFISH_mouseEmbryo")
-
 # load object
-# spe <- seqFISH_mouseEmbryo()
+spe <- seqFISH_mouseEmbryo()
+
 # alternatively: using ExperimentHub query
 # spe <- myfiles[[3]]
 # alternatively: using ExperimentHub ID
-# spe <- myfiles[["EH5445"]]
+# spe <- myfiles[["EH6710"]]
 
 # check object
 spe

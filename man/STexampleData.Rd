@@ -5,6 +5,9 @@
 \alias{Visium_humanDLPFC}
 \alias{Visium_mouseCoronal}
 \alias{seqFISH_mouseEmbryo}
+\alias{Visium_humanDLPFC_3_13}
+\alias{Visium_mouseCoronal_3_13}
+\alias{seqFISH_mouseEmbryo_3_13}
 \title{
 Collection of spatially resolved transcriptomics datasets in SpatialExperiment 
 Bioconductor format
@@ -14,6 +17,10 @@ Collection of spatially resolved transcriptomics datasets in SpatialExperiment
 Bioconductor format, for use in examples, demonstrations, tutorials, and other 
 purposes. The datasets have been sourced from various publicly available 
 sources, and cover several technological platforms.
+
+Note that objects in Bioconductor version 3.13 have names ending with 
+\code{_3_13}, and have been kept for backward compatibility. The latest versions 
+of the objects are available in Bioconductor version 3.14 onwards.
 }
 \details{
 The \code{STexampleData} package provides access to a collection of spatially 
@@ -53,6 +60,7 @@ the original publication.
 }
 \examples{
 # load using dataset name
-spe <- Visium_humanDLPFC()
+# note objects in Bioc version 3.13 have names ending in "_3_13"
+spe <- Visium_humanDLPFC_3_13()
 spe
 }

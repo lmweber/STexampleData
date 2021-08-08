@@ -25,6 +25,8 @@ These datasets have been collected from various publicly available sources, and 
 
 The `SpatialExperiment` class is an extension of `SingleCellExperiment`, adapted for the properties of spatially resolved transcriptomics data. For more details, see the `SpatialExperiment` documentation.
 
+Note that objects in Bioconductor version 3.13 have names ending with `_3_13`, and have been kept for backward compatibility. The latest versions of the objects are available in Bioconductor version 3.14 onwards.
+
 
 # Installation
 

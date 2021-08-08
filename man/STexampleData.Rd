@@ -52,7 +52,7 @@ the original publication.
 }
 }
 \examples{
-# load using dataset name
-spe <- Visium_humanDLPFC()
-spe
+# load using helper function for updated objects in Bioc 3.13
+# spe <- load_data("Visium_humanDLPFC"
+# spe
 }

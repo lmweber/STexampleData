@@ -1,6 +1,6 @@
 #################################################################
 # Script to create Visium mouse coronal data object from raw data
-# Lukas Weber, updated June 2021
+# Lukas Weber, updated Jan 2022
 #################################################################
 
 # for more details on raw data see:
@@ -120,18 +120,13 @@ rownames(row_data) <- df_features$gene_id
 
 # column data
 # include column of sample IDs
-col_data <- DataFrame(sample_id = rep("sample01", nrow(df_barcodes)))
-rownames(col_data) <- df_barcodes$barcode_id
-
-# spatial data
-# include duplicated columns of spatial coordinates with original column names
-# (for users who need these column names)
-spatial_data <- DataFrame(df_tisspos_ord)
-rownames(spatial_data) <- df_tisspos_ord$barcode_id
+col_data <- DataFrame(df_tisspos_ord, sample_id = "sample01")
+col_data <- col_data[, c(1, 7, 2:6)]
+rownames(col_data) <- col_data$barcode_id
 
 # spatial coordinates
 # use default column names 'x' and 'y'
-spatial_coords <- as.matrix(df_tisspos_ord[, c("pxl_row_in_fullres", "pxl_col_in_fullres")])
+spatial_coords <- as.matrix(df_tisspos_ord[, c("pxl_col_in_fullres", "pxl_row_in_fullres")])
 colnames(spatial_coords) <- c("x", "y")
 rownames(spatial_coords) <- df_tisspos_ord$barcode_id
 
@@ -150,7 +145,6 @@ spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
   colData = col_data, 
-  spatialData = spatial_data, 
   spatialCoords = spatial_coords, 
   imgData = img_data
 )

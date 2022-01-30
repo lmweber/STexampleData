@@ -1,10 +1,10 @@
 ###############################################################
 # Script to create Visium human DLPFC data object from raw data
-# Lukas Weber, updated June 2021
+# Lukas Weber, updated Jan 2022
 ###############################################################
 
 # For more details on this dataset see:
-# Maynard and Collado-Torres et al. (2020): https://www.biorxiv.org/content/10.1101/2020.02.28.969931v1
+# Maynard and Collado-Torres et al. (2020): https://www.nature.com/articles/s41593-020-00787-0
 # spatialLIBD website: http://spatial.libd.org/spatialLIBD/
 
 # The full dataset (12 samples) can also be downloaded as a SingleCellExperiment
@@ -104,6 +104,8 @@ df_truth <- colData(sce_sub)[, cols_keep]
 # rename columns
 colnames(df_truth)[colnames(df_truth) == "barcode"] <- "barcode_id"
 colnames(df_truth)[colnames(df_truth) == "layer_guess_reordered"] <- "ground_truth"
+# convert labels to character
+df_truth$ground_truth <- as.character(df_truth$ground_truth)
 # add custom sample ID
 df_truth$sample_id <- "sample_151673"
 
@@ -169,19 +171,15 @@ row_data <- DataFrame(df_features)
 rownames(row_data) <- df_features$gene_id
 
 # column data
-# drop duplicated column of barcode IDs
-col_data <- DataFrame(df_truth_matched[, -1])
-rownames(col_data) <- df_truth_matched$barcode_id
-
-# spatial data
-# include duplicated columns of spatial coordinates with original column names
-# (for users who need these column names)
-spatial_data <- DataFrame(df_tisspos_ord)
-rownames(spatial_data) <- df_tisspos_ord$barcode_id
+stopifnot(nrow(df_truth_matched) == nrow(df_tisspos_ord))
+stopifnot(all(df_truth_matched$barcode_id == df_tisspos_ord$barcode_id))
+col_data <- DataFrame(cbind(df_truth_matched, df_tisspos_ord[, -1]))
+col_data <- col_data[, c(1, 4, 5:9, 3, 2)]
+rownames(col_data) <- col_data$barcode_id
 
 # spatial coordinates
 # use default column names 'x' and 'y'
-spatial_coords <- as.matrix(df_tisspos_ord[, c("pxl_row_in_fullres", "pxl_col_in_fullres")])
+spatial_coords <- as.matrix(df_tisspos_ord[, c("pxl_col_in_fullres", "pxl_row_in_fullres")])
 colnames(spatial_coords) <- c("x", "y")
 rownames(spatial_coords) <- df_tisspos_ord$barcode_id
 
@@ -200,7 +198,6 @@ spe <- SpatialExperiment(
   assays = list(counts = counts), 
   rowData = row_data, 
   colData = col_data, 
-  spatialData = spatial_data, 
   spatialCoords = spatial_coords, 
   imgData = img_data
 )

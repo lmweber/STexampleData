@@ -28,7 +28,7 @@ NULL
 Visium_humanDLPFC <- function() {
   
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
-  url <- "https://www.dropbox.com/s/rpagokoii55iufo/Visium_humanDLPFC.rds?dl=1"
+  url <- "https://www.dropbox.com/s/2dv2g2whl6smwxo/Visium_humanDLPFC.rds?dl=1"
   
   path <- "tmp"
   fn <- file.path(path, basename(url))
@@ -46,7 +46,7 @@ Visium_humanDLPFC <- function() {
 Visium_mouseCoronal <- function() {
   
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
-  url <- "https://www.dropbox.com/s/qjlu7s1oohcz1l0/Visium_mouseCoronal.rds?dl=1"
+  url <- "https://www.dropbox.com/s/l453bqah4pr2bsh/Visium_mouseCoronal.rds?dl=1"
   
   path <- "tmp"
   fn <- file.path(path, basename(url))

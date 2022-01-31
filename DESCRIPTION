@@ -18,6 +18,8 @@ biocViews:
     ReproducibleResearch, 
     ExpressionData, 
     SingleCellData, 
+    Transcriptomics, 
+    SpatialData, 
     Homo_sapiens_Data, 
     Mus_musculus_Data
 Depends: 

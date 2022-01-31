@@ -61,7 +61,7 @@ stopifnot(ncol(counts) == nrow(df_barcodes))
 file_tisspos <- file.path("tmp", "spatial", "tissue_positions_list.csv")
 df_tisspos <- read.csv(file_tisspos, header = FALSE, 
                        col.names=c("barcode_id", "in_tissue", "array_row", "array_col", 
-                                   "pxl_col_in_fullres", "pxl_row_in_fullres"))
+                                   "pxl_row_in_fullres", "pxl_col_in_fullres"))
 
 # check dimensions
 dim(df_barcodes)

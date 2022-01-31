@@ -15,8 +15,6 @@
 
 library(SpatialExperiment)
 library(MERINGUE)
-library(dplyr)
-library(here)
 
 
 # ---------

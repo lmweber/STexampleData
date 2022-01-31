@@ -61,7 +61,7 @@ stopifnot(ncol(counts) == nrow(df_barcodes))
 file_tisspos <- file.path("tmp", "spatial", "tissue_positions_list.csv")
 df_tisspos <- read.csv(file_tisspos, header = FALSE, 
                        col.names=c("barcode_id", "in_tissue", "array_row", "array_col", 
-                                   "pxl_col_in_fullres", "pxl_row_in_fullres"))
+                                   "pxl_row_in_fullres", "pxl_col_in_fullres"))
 
 # check dimensions
 dim(df_barcodes)
@@ -126,7 +126,7 @@ rownames(col_data) <- col_data$barcode_id
 
 # spatial coordinates
 # use default column names 'x' and 'y'
-spatial_coords <- as.matrix(df_tisspos_ord[, c("pxl_col_in_fullres", "pxl_row_in_fullres")])
+spatial_coords <- as.matrix(df_tisspos_ord[, c("pxl_row_in_fullres", "pxl_col_in_fullres")])
 colnames(spatial_coords) <- c("x", "y")
 rownames(spatial_coords) <- df_tisspos_ord$barcode_id
 

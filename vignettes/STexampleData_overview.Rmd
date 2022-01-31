@@ -147,11 +147,13 @@ md <- as.data.frame(mcols(myfiles))
 ```{r, message=FALSE}
 # load Visium_humanDLPFC dataset using ExperimentHub query
 spe <- myfiles[[1]]
+spe
 ```
 
 ```{r, message=FALSE}
 # load Visium_humanDLPFC dataset using ExperimentHub ID
 spe <- myfiles[["EH6708"]]
+spe
 ```
 
 

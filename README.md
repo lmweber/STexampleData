@@ -23,16 +23,7 @@ BiocManager::install("STexampleData")
 
 ### Development version
 
-To install the development version, there are two options.
-
-(i) Install the [appropriate version of R (R-release between April and October, or R-devel between October and April)](http://bioconductor.org/developers/how-to/useDevel/), then install the Bioconductor package installer and the development version of the `STexampleData` package as follows.
-
-```
-install.packages("BiocManager")
-BiocManager::install("STexampleData", version = "devel")
-```
-
-(ii) Alternatively, if you do not want to install R-devel (since this may cause issues with other packages), you can use the latest release version of R from [CRAN](https://cran.r-project.org/) and install the development version of the `STexampleData` package from GitHub as follows.
+The development version (including the latest added datasets) can be installed from GitHub as follows.
 
 ```
 install.packages("remotes")

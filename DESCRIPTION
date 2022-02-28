@@ -31,5 +31,6 @@ VignetteBuilder: knitr
 Suggests:
     BiocStyle, 
     knitr, 
-    rmarkdown
+    rmarkdown, 
+    BumpyMatrix
 RoxygenNote: 7.1.2

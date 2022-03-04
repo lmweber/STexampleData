@@ -174,7 +174,7 @@ rownames(row_data) <- df_features$gene_id
 stopifnot(nrow(df_truth_matched) == nrow(df_tisspos_ord))
 stopifnot(all(df_truth_matched$barcode_id == df_tisspos_ord$barcode_id))
 col_data <- DataFrame(cbind(df_truth_matched, df_tisspos_ord[, -1]))
-col_data <- col_data[, c(1, 4, 5:9, 3, 2)]
+col_data <- col_data[, c(1, 4, 5:7, 3, 2)]
 rownames(col_data) <- col_data$barcode_id
 
 # spatial coordinates

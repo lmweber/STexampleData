@@ -121,7 +121,7 @@ rownames(row_data) <- df_features$gene_id
 # column data
 # include column of sample IDs
 col_data <- DataFrame(df_tisspos_ord, sample_id = "sample01")
-col_data <- col_data[, c(1, 7, 2:6)]
+col_data <- col_data[, c(1, 7, 2:4)]
 rownames(col_data) <- col_data$barcode_id
 
 # spatial coordinates

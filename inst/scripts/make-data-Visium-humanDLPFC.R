@@ -1,6 +1,6 @@
 ###############################################################
 # Script to create Visium human DLPFC data object from raw data
-# Lukas Weber, updated Jan 2022
+# Lukas Weber, updated Mar 2022
 ###############################################################
 
 # For more details on this dataset see:
@@ -178,9 +178,7 @@ col_data <- col_data[, c(1, 4, 5:9, 3, 2)]
 rownames(col_data) <- col_data$barcode_id
 
 # spatial coordinates
-# use default column names 'x' and 'y'
 spatial_coords <- as.matrix(df_tisspos_ord[, c("pxl_col_in_fullres", "pxl_row_in_fullres")])
-colnames(spatial_coords) <- c("x", "y")
 rownames(spatial_coords) <- df_tisspos_ord$barcode_id
 
 # image data

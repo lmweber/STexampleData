@@ -1,6 +1,6 @@
 ################################################################################
 # Script to create Spatial Transcriptomics (ST) mouse olfactory bulb (OB) object
-# Lukas Weber, updated Jan 2022
+# Lukas Weber, updated Mar 2022
 ################################################################################
 
 # references:

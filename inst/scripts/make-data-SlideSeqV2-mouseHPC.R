@@ -1,6 +1,6 @@
 ##################################################################
 # Script to create Slide-seqV2 mouse hippocampus (HPC) data object
-# Lukas Weber, updated Jan 2022
+# Lukas Weber, updated Mar 2022
 ##################################################################
 
 # references:

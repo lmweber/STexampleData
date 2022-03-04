@@ -25,7 +25,7 @@ NULL
 #' @rdname load_data
 Visium_humanDLPFC <- function() {
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
-  urlname <- "https://www.dropbox.com/s/8p7e9lmswknoqmp/Visium_humanDLPFC.rds?dl=1"
+  urlname <- "https://www.dropbox.com/s/lb5wfo6tskhfpdb/Visium_humanDLPFC.rds?dl=1"
   spe <- readRDS(url(urlname))
   spe
 }
@@ -33,7 +33,7 @@ Visium_humanDLPFC <- function() {
 #' @rdname load_data
 Visium_mouseCoronal <- function() {
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
-  urlname <- "https://www.dropbox.com/s/juwqscf8h3amw0f/Visium_mouseCoronal.rds?dl=1"
+  urlname <- "https://www.dropbox.com/s/wl7xb7edcjq8ski/Visium_mouseCoronal.rds?dl=1"
   spe <- readRDS(url(urlname))
   spe
 }
@@ -41,7 +41,7 @@ Visium_mouseCoronal <- function() {
 #' @rdname load_data
 seqFISH_mouseEmbryo <- function() {
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
-  urlname <- "https://www.dropbox.com/s/sfes5p3goxgr7zd/seqFISH_mouseEmbryo.rds?dl=1"
+  urlname <- "https://www.dropbox.com/s/oszugwkv5cldipe/seqFISH_mouseEmbryo.rds?dl=1"
   spe <- readRDS(url(urlname))
   spe
 }
@@ -49,7 +49,7 @@ seqFISH_mouseEmbryo <- function() {
 #' @rdname load_data
 ST_mouseOB <- function() {
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
-  urlname <- "https://www.dropbox.com/s/871mns9byabu4lm/ST_mouseOB.rds?dl=1"
+  urlname <- "https://www.dropbox.com/s/zrohcp57sbyuyq0/ST_mouseOB.rds?dl=1"
   spe <- readRDS(url(urlname))
   spe
 }
@@ -57,7 +57,7 @@ ST_mouseOB <- function() {
 #' @rdname load_data
 SlideSeqV2_mouseHPC <- function() {
   # note: change "dl=0" to "dl=1" in link from Dropbox website to enable downloading
-  urlname <- "https://www.dropbox.com/s/k1xp5tsfqq0ccco/SlideSeqV2_mouseHPC.rds?dl=1"
+  urlname <- "https://www.dropbox.com/s/qv3h54p1ulb4fxt/SlideSeqV2_mouseHPC.rds?dl=1"
   spe <- readRDS(url(urlname))
   spe
 }

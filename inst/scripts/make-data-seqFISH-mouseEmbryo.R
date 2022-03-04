@@ -117,6 +117,7 @@ colnames(col_data)[1] <- "cell_id"
 
 # spatial coordinates
 spatial_coords <- as.matrix(metadata_sub[, c("x_global_affine", "y_global_affine")])
+colnames(spatial_coords) <- c("x", "y")
 
 # create SpatialExperiment
 spe <- SpatialExperiment(

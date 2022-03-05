@@ -23,7 +23,7 @@ library(RCTD)
 # load data object from Stickels et al. (2020)
 # previously downloaded and saved locally
 
-dir_data <- "~/data/STexampleData/Slide_seqV2_mouse_hippo"
+dir_data <- "~/Dropbox/data/STexampleData/Slide_seqV2_mouse_hippo"
 
 
 # load expression matrix

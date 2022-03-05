@@ -23,7 +23,7 @@ library(tidyr)
 
 # data files downloaded and saved locally from links at https://marionilab.cruk.cam.ac.uk/SpatialMouseAtlas/
 
-dir_data <- "~/data/STexampleData/SpatialMouseAtlas2020"
+dir_data <- "~/Dropbox/data/STexampleData/SpatialMouseAtlas2020"
 
 # contains cell-level info
 metadata <- readRDS(file.path(dir_data, "metadata.Rds"))

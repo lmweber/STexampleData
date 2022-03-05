@@ -32,9 +32,9 @@ library(dplyr)
 # Load data
 # ---------
 
-# data files downloaded and saved locally from links above (and/or JHPCE cluster)
+# data files downloaded and saved locally from links above
 
-dir_data <- "~/data/STexampleData/spatialLIBD"
+dir_data <- "~/Dropbox/data/STexampleData/spatialLIBD"
 
 # barcodes
 file_barcodes <- file.path(dir_data, "JHPCE", "151673_raw_feature_bc_matrix__barcodes.tsv.gz")

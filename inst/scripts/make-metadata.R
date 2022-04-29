@@ -5,7 +5,7 @@
 # metadata for all datasets
 
 df_all <- data.frame(
-  BiocVersion = "3.13", 
+  BiocVersion = "3.15", 
   Genome = NA, 
   SourceType = "FASTQ", 
   SourceVersion = NA, 

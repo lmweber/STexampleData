@@ -8,23 +8,23 @@
 \alias{ST_mouseOB}
 \alias{SlideSeqV2_mouseHPC}
 \title{
-Collection of spatially resolved transcriptomics datasets in SpatialExperiment 
+Collection of spatially-resolved transcriptomics datasets in SpatialExperiment 
 Bioconductor format
 }
 \description{
-Collection of spatially resolved transcriptomics (ST) datasets in 
+Collection of spatially-resolved transcriptomics (SRT) datasets in 
 SpatialExperiment Bioconductor format, for use in examples, demonstrations, 
-and tutorials. The datasets are from several different ST platforms and 
+and tutorials. The datasets are from several different SRT platforms and 
 have been sourced from various publicly available sources. Several datasets 
 include images and/or ground truth annotation labels.
 }
 \details{
-The \code{STexampleData} package contains a collection of spatially resolved 
-transcriptomics (ST) datasets, which have been formatted into the 
+The \code{STexampleData} package contains a collection of spatially-resolved 
+transcriptomics (SRT) datasets, which have been formatted into the 
 \code{SpatialExperiment} Bioconductor class, for use in examples, 
 demonstrations, and tutorials.
 
-The datasets are from several different ST platforms and have been sourced 
+The datasets are from several different SRT platforms and have been sourced 
 from various publicly available sources. Several datasets include images and/or 
 ground truth annotation labels.
 

@@ -1,6 +1,6 @@
 # STexampleData
 
-The `STexampleData` package contains a collection of spatially resolved transcriptomics (ST) datasets, which have been formatted into the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor class, for use in examples, demonstrations, and tutorials. The datasets are from several different ST platforms and have been sourced from various publicly available sources. Several datasets include images and/or ground truth annotation labels.
+The `STexampleData` package contains a collection of spatially-resolved transcriptomics (SRT) datasets, which have been formatted into the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor class, for use in examples, demonstrations, and tutorials. The datasets are from several different SRT platforms and have been sourced from various publicly available sources. Several datasets include images and/or ground truth annotation labels.
 
 The `STexampleData` package is available from [Bioconductor](https://bioconductor.org/packages/STexampleData).
 

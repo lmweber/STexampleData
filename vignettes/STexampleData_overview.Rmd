@@ -106,26 +106,6 @@ spe
 ```
 
 
-### ST_mouseOB
-
-```{r, message=FALSE}
-# load object
-spe <- ST_mouseOB()
-# check object
-spe
-```
-
-
-### SlideSeqV2_mouseHPC
-
-```{r, message=FALSE}
-# load object
-spe <- SlideSeqV2_mouseHPC()
-# check object
-spe
-```
-
-
 ## Load by querying ExperimentHub database
 
 ```{r, message=FALSE}

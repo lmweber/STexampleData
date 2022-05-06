@@ -1,3 +1,8 @@
 importFrom(utils, read.csv)
 importFrom(SpatialExperiment, SpatialExperiment)
 importFrom(ExperimentHub, createHubAccessors)
+export(Visium_humanDLPFC)
+export(Visium_mouseCoronal)
+export(seqFISH_mouseEmbryo)
+export(ST_mouseOB)
+export(SlideSeqV2_mouseHPC)

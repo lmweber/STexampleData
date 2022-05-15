@@ -150,12 +150,6 @@ spe <- myfiles[[1]]
 spe
 ```
 
-```{r, message=FALSE}
-# load Visium_humanDLPFC dataset using ExperimentHub ID
-spe <- myfiles[["EH6708"]]
-spe
-```
-
 
 # Generating objects from raw data files
 

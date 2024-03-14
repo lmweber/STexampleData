@@ -29,4 +29,4 @@ remotes::install_github("lmweber/STexampleData", build_vignettes = TRUE)
 
 ## Citation
 
-Righell D.\*, Weber L.M.\*, Crowell H.L.\*, Pardo B., Collado-Torres L., Ghazanfar S., Lun A.T.L., Hicks S.C.\*, and Risso D.\* (2022). *SpatialExperiment: infrastructure for spatially resolved transcriptomics data in R using Bioconductor.* [Bioinformatics](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btac299/6575443), btac299.
+- Righell D.\*, Weber L.M.\*, Crowell H.L.\*, Pardo B., Collado-Torres L., Ghazanfar S., Lun A.T.L., Hicks S.C.\*, and Risso D.\* (2022). *SpatialExperiment: infrastructure for spatially resolved transcriptomics data in R using Bioconductor.* [Bioinformatics](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btac299/6575443), btac299.

@@ -12,21 +12,14 @@ A vignette containing examples and documentation is available from [Bioconductor
 
 ## Installation
 
-The `STexampleData` package can be installed from Bioconductor. Note that Bioconductor follows a "release" and "development" schedule, where the release version is considered to be stable and updated every 6 months, and the development version contains latest updates (and then becomes the next release version every 6 months).
-
-
-### Release version
-
-To install the stable release version, install the latest release version of R from [CRAN](https://cran.r-project.org/), then install the Bioconductor package installer and the `STexampleData` package:
+The release version of the `STexampleData` package can be installed from Bioconductor:
 
 ```
 install.packages("BiocManager")
 BiocManager::install("STexampleData")
 ```
 
-### Development version
-
-The development version (including the latest added datasets) can be installed from GitHub:
+The development version can be installed from the development version of Bioconductor (see Bioconductor website for details) or from GitHub:
 
 ```
 install.packages("remotes")

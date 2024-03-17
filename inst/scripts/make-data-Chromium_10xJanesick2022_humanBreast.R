@@ -54,6 +54,7 @@ sce <- sce[, cells_overlap]
 celltype <- celltype[celltype$Barcode %in% cells_overlap, ]
 
 colData(sce) <- as(merge(data.frame(colData(sce)), celltype), "DFrame")
+colnames(sce) <- sce$Barcode
 sce
 
 

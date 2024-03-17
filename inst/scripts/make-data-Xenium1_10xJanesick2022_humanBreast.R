@@ -68,7 +68,7 @@ all(c("cell_feature_matrix.h5", "cell_feature_matrix", "cells.csv.gz") %in%
 xe1_spe <- SpatialExperimentIO::readXeniumSXE(here::here("raw_data/xenium_sample1rep1/outs"), 
                                               return_type = "SPE")
 xe1_spe <- xe1_spe[rowData(xe1_spe)$Type == "Gene Expression"]
-
+rownames(xe1) <- rowData(xe1)$Symbol
 
 # ------------------
 # Saving data object

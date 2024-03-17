@@ -96,6 +96,63 @@ df_SlideSeqV2_mouseHPC <- cbind(
   stringsAsFactors = FALSE
 )
 
+df_Chromium_10xJanesick2022_humanBreast <- cbind(
+  df_all, 
+  Title = "Chromium_10xJanesick2022_humanBreast", 
+  Description =  paste0(
+    "Chromium data in the 10x Xenium paper - Janesick et al. (2023). 
+    High resolution mapping of the breast cancer tumor microenvironment using 
+    integrated single cell, spatial and in situ analysis of FFPE tissue"), 
+  SourceUrl = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7782698",
+  Species = "Homo sapiens", 
+  TaxonomyId = "9606", 
+  RDataPath = "STexampleData/3_18/Chromium_10xJanesick2022_humanBreast.rds",
+  stringsAsFactors = FALSE
+)
+
+
+df_Visium_10xJanesick2022_humanBreast <- cbind(
+  df_all, 
+  Title = "Visium_10xJanesick2022_humanBreast", 
+  Description =  paste0(
+    "Visium data in the 10x Xenium paper - Janesick et al. (2023). 
+    High resolution mapping of the breast cancer tumor microenvironment using 
+    integrated single cell, spatial and in situ analysis of FFPE tissue"), 
+  SourceUrl = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7782699", 
+  Species = "Homo sapiens", 
+  TaxonomyId = "9606", 
+  RDataPath = "STexampleData/3_18/Visium_10xJanesick2022_humanBreast.rds",
+  stringsAsFactors = FALSE
+)
+
+df_Xenium1_10xJanesick2022_humanBreast <- cbind(
+  df_all, 
+  Title = "Xenium1_10xJanesick2022_humanBreast", 
+  Description = paste0(
+    "Xenium sample 1 replicate 1 in the 10x Xenium paper - Janesick et al. (2023). 
+    High resolution mapping of the breast cancer tumor microenvironment using 
+    integrated single cell, spatial and in situ analysis of FFPE tissue"), 
+  SourceUrl = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7780153", 
+  Species = "Homo sapiens", 
+  TaxonomyId = "9606", 
+  RDataPath = "STexampleData/3_18/Xenium1_10xJanesick2022_humanBreast.rds",
+  stringsAsFactors = FALSE
+)
+
+df_Xenium2_10xJanesick2022_humanBreast <- cbind(
+  df_all, 
+  Title = "Xenium2_10xJanesick2022_humanBreast", 
+  Description =  paste0(
+    "Xenium sample 1 replicate 2 in the 10x Xenium paper - Janesick et al. (2023). 
+    High resolution mapping of the breast cancer tumor microenvironment using 
+    integrated single cell, spatial and in situ analysis of FFPE tissue"), 
+  SourceUrl = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7780154", 
+  Species = "Homo sapiens", 
+  TaxonomyId = "9606", 
+  RDataPath = "STexampleData/3_18/Xenium2_10xJanesick2022_humanBreast.rds",
+  stringsAsFactors = FALSE
+)
+
 
 # combine and save as .csv spreadsheet file
 
@@ -104,7 +161,11 @@ df_combined <- rbind(
   df_Visium_mouseCoronal, 
   df_seqFISH_mouseEmbryo, 
   df_ST_mouseOB, 
-  df_SlideSeqV2_mouseHPC
+  df_SlideSeqV2_mouseHPC,
+  df_Chromium_10xJanesick2022_humanBreast,
+  df_Visium_10xJanesick2022_humanBreast,
+  df_Xenium1_10xJanesick2022_humanBreast,
+  df_Xenium2_10xJanesick2022_humanBreast
 )
 
 write.csv(df_combined, file = "../extdata/metadata.csv", row.names = FALSE)

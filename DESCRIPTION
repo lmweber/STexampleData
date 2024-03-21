@@ -7,8 +7,10 @@ Description: Collection of spatially-resolved transcriptomics (SRT) datasets in
     and tutorials. The datasets are from several different SRT platforms and 
     have been sourced from various publicly available sources. Several datasets 
     include images and/or ground truth annotation labels.
-Authors@R: person("Lukas M.", "Weber", email = "lukas.weber.edu@gmail.com", 
-                  role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3282-1730"))
+Authors@R: c(person("Lukas M.", "Weber", email = "lukas.weber.edu@gmail.com", 
+                  role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3282-1730")),
+             person("Yixing E.", "Dong", email = "estelladong729@gmail.com", 
+                  role = c("aut"), comment = c(ORCID = "0009-0003-5115-5686")))
 URL: https://github.com/lmweber/STexampleData
 BugReports: https://github.com/lmweber/STexampleData/issues
 License: MIT + file LICENSE

@@ -102,7 +102,8 @@ df_Chromium_10xJanesick2022_humanBreast <- cbind(
   Description =  paste0(
     "Chromium data in the 10x Xenium paper - Janesick et al. (2023). 
     High resolution mapping of the breast cancer tumor microenvironment using 
-    integrated single cell, spatial and in situ analysis of FFPE tissue"), 
+    integrated single cell, spatial and in situ analysis of FFPE tissue. This 
+    dataset contains annotations for cell type from the original authors."), 
   SourceUrl = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7782698",
   Species = "Homo sapiens", 
   TaxonomyId = "9606", 
@@ -117,7 +118,7 @@ df_Visium_10xJanesick2022_humanBreast <- cbind(
   Description =  paste0(
     "Visium data in the 10x Xenium paper - Janesick et al. (2023). 
     High resolution mapping of the breast cancer tumor microenvironment using 
-    integrated single cell, spatial and in situ analysis of FFPE tissue"), 
+    integrated single cell, spatial and in situ analysis of FFPE tissue."), 
   SourceUrl = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7782699", 
   Species = "Homo sapiens", 
   TaxonomyId = "9606", 
@@ -131,7 +132,7 @@ df_Xenium1_10xJanesick2022_humanBreast <- cbind(
   Description = paste0(
     "Xenium sample 1 replicate 1 in the 10x Xenium paper - Janesick et al. (2023). 
     High resolution mapping of the breast cancer tumor microenvironment using 
-    integrated single cell, spatial and in situ analysis of FFPE tissue"), 
+    integrated single cell, spatial and in situ analysis of FFPE tissue."), 
   SourceUrl = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7780153", 
   Species = "Homo sapiens", 
   TaxonomyId = "9606", 
@@ -145,7 +146,7 @@ df_Xenium2_10xJanesick2022_humanBreast <- cbind(
   Description =  paste0(
     "Xenium sample 1 replicate 2 in the 10x Xenium paper - Janesick et al. (2023). 
     High resolution mapping of the breast cancer tumor microenvironment using 
-    integrated single cell, spatial and in situ analysis of FFPE tissue"), 
+    integrated single cell, spatial and in situ analysis of FFPE tissue."), 
   SourceUrl = "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7780154", 
   Species = "Homo sapiens", 
   TaxonomyId = "9606", 
@@ -153,6 +154,46 @@ df_Xenium2_10xJanesick2022_humanBreast <- cbind(
   stringsAsFactors = FALSE
 )
 
+df_Cosmx_humanLung <- cbind(
+  df_all, 
+  Title = "Cosmx_humanLung", 
+  Description =  paste0(
+    "A single sample of CosMx human non-small cell lung cancer (NSCLC) data 
+    patient 9 sample 1. This dataset was previously released by Nanostring on 
+    their website."), 
+  SourceUrl = "https://nanostring.com/resources/smi-ffpe-dataset-lung9-rep1-data/", 
+  Species = "Homo sapiens", 
+  TaxonomyId = "9606", 
+  RDataPath = "STexampleData/3_18/Cosmx_humanLung.rds",
+  stringsAsFactors = FALSE
+)
+
+df_Merscope_humanOvarian <- cbind(
+  df_all, 
+  Title = "Merscope_humanOvarian", 
+  Description =  paste0(
+    "A single sample of MERSCOPE human ovarian cancer patient 2 sample 1. This 
+    dataset was previously released by Vizgen on their website."), 
+  SourceUrl = "https://console.cloud.google.com/storage/browser/vz-ffpe-showcase/HumanOvarianCancerPatient2Slice1;tab=objects?prefix=&forceOnObjectsSortingFiltering=false", 
+  Species = "Homo sapiens", 
+  TaxonomyId = "9606", 
+  RDataPath = "STexampleData/3_18/Merscope_humanOvarian.rds",
+  stringsAsFactors = FALSE
+)
+
+df_Starmapplus_mouseBrain <- cbind(
+  df_all, 
+  Title = "Starmapplus_mouseBrain", 
+  Description =  paste0(
+    "A single sample of the Starmapplus mouse brain well 05 data by Shi, H. 
+    et al. (2023). This dataset contains annotations for cell type and tissue 
+    regions from the original authors."), 
+  SourceUrl = "https://zenodo.org/records/8327576", 
+  Species = "Mus musculus", 
+  TaxonomyId = "10090", 
+  RDataPath = "STexampleData/3_18/Starmapplus_mouseBrain.rds",
+  stringsAsFactors = FALSE
+)
 
 # combine and save as .csv spreadsheet file
 
@@ -165,7 +206,10 @@ df_combined <- rbind(
   df_Chromium_10xJanesick2022_humanBreast,
   df_Visium_10xJanesick2022_humanBreast,
   df_Xenium1_10xJanesick2022_humanBreast,
-  df_Xenium2_10xJanesick2022_humanBreast
+  df_Xenium2_10xJanesick2022_humanBreast,
+  df_Cosmx_humanLung,
+  df_Merscope_humanOvarian,
+  df_Starmapplus_mouseBrain
 )
 
 write.csv(df_combined, file = "../extdata/metadata.csv", row.names = FALSE)

@@ -10,7 +10,7 @@ df_all <- data.frame(
   SourceVersion = NA, 
   Coordinate_1_based = NA, 
   DataProvider = NA, 
-  Maintainer = "Lukas M. Weber <lmweberedu@gmail.com>", 
+  Maintainer = "Lukas M. Weber <lmweb012@gmail.com>", 
   stringsAsFactors = FALSE
 )
 

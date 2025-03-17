@@ -1,5 +1,5 @@
 Package: STexampleData
-Version: 1.14.1
+Version: 1.14.2
 Title: Collection of spatial transcriptomics datasets in SpatialExperiment 
     Bioconductor format
 Description: Collection of spatial transcriptomics datasets stored in 

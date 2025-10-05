@@ -1,5 +1,5 @@
 Package: STexampleData
-Version: 1.15.3
+Version: 1.15.4
 Title: Collection of spatial transcriptomics datasets in SpatialExperiment 
     Bioconductor format
 Description: Collection of spatial transcriptomics datasets stored in 
@@ -36,4 +36,4 @@ Suggests:
     rmarkdown, 
     BumpyMatrix, 
     HDF5Array
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.3

@@ -2,6 +2,7 @@
 
 [![R build status](https://github.com/lmweber/STexampleData/workflows/R-CMD-check-bioc/badge.svg)](https://github.com/lmweber/STexampleData/actions)
 
+<img src="inst/extdata/STexampleData.png" width="200" align="right"/>
 
 The `STexampleData` package contains a collection of spatial transcriptomics datasets, which have been formatted into the [SpatialExperiment](https://bioconductor.org/packages/SpatialExperiment) Bioconductor class, for use in examples, demonstrations, and tutorials. The datasets are from several different technological platforms and have been sourced from various publicly available sources. Several datasets include images and/or reference annotation labels.
 

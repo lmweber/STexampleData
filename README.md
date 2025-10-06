@@ -8,19 +8,19 @@ The `STexampleData` package contains a collection of spatial transcriptomics dat
 
 The `STexampleData` package is available from [Bioconductor](https://bioconductor.org/packages/STexampleData).
 
-A vignette containing examples and documentation is available from [Bioconductor](https://bioconductor.org/packages/STexampleData).
+A vignette containing examples and documentation is also available from [Bioconductor](https://bioconductor.org/packages/STexampleData).
 
 
 ## Installation
 
-The release version of the `STexampleData` package can be installed from Bioconductor:
+The current release version of the `STexampleData` package can be installed from Bioconductor as follows. This is the recommended installation for most users.
 
 ```
 install.packages("BiocManager")
 BiocManager::install("STexampleData")
 ```
 
-The development version can be installed from the development version of Bioconductor (see Bioconductor website for details) or from GitHub:
+For advanced users who require any latest updates, the development version can also be installed from the `devel` version of Bioconductor (see the Bioconductor website for details on how to use the `devel` version), or from GitHub as follows:
 
 ```
 install.packages("remotes")

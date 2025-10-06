@@ -20,7 +20,7 @@ install.packages("BiocManager")
 BiocManager::install("STexampleData")
 ```
 
-For advanced users who require any latest updates, the development version can also be installed from the `devel` version of Bioconductor (see the Bioconductor website for details on how to use the `devel` version), or from GitHub as follows:
+For advanced users who require any latest updates, the development version can also be installed from the `devel` version of Bioconductor (see the Bioconductor website for details on how to use the `devel` version), or from GitHub:
 
 ```
 install.packages("remotes")

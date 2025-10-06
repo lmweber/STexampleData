@@ -1,3 +1,6 @@
+changes in version 1.17.1 (2025-10-05)
++ add sticker
+
 changes in version 1.15.2 (2025-03-10)
 + bug fixes: re-built objects Visium_humanDLPFC, Visium_mouseCoronal, 
   Janesick_breastCancer_Chromium, Janesick_breastCancer_Visium

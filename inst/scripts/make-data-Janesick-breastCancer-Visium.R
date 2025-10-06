@@ -56,18 +56,17 @@ list.files(here::here("raw_data/visium/outs/"))
 # ------------------------
 # Create SpatialExperiment
 # ------------------------
-
 # We can finally read in the Visium object with the reader function below. 
-vis <- SpatialExperiment::read10xVisium(here::here("raw_data/visium/outs"), 
-                                        type = "HDF5",
-                                        data = "filtered",
-                                        image = "lowres")
-vis
+vis <- VisiumIO::TENxVisium(spacerangerOut = here::here("raw_data/visium"), 
+                            processing = "filtered",
+                            images = "lowres")
+
+vis <- VisiumIO::import(vis)
 
 
 # Check that there are some duplicated gene names that we should rename to avoid 
 # problems with downstream analysis. 
-head(sort(table(rowData(vis)$symbol), decreasing = TRUE))
+head(sort(table(rowData(vis)$Symbol), decreasing = TRUE))
 
 
 # We define the following rules of renaming for the three genes with duplicated 
@@ -77,21 +76,21 @@ head(sort(table(rowData(vis)$symbol), decreasing = TRUE))
 rowData(vis)$geneid <- rownames(vis)
 RD <- data.frame(rowData(vis))
 RD <- RD %>%
-  mutate(symbol = case_when(
+  mutate(Symbol = case_when(
     geneid == "ENSG00000284770" ~ "TBCE.1",
     geneid == "ENSG00000187522" ~ "HSPA14.1",
     geneid == "ENSG00000269226" ~ "TMSB15B.1",
-    .default = symbol)
+    .default = Symbol)
   )
 
-length(unique(RD$symbol)) == length(RD$symbol)
+length(unique(RD$Symbol)) == length(RD$Symbol)
 
 
 # We have now kept the ensemble ID in `rowData()` and set the `rownames()` of 
 # the object to gene symbol.
 
 rowData(vis) <- as(RD, "DFrame")
-rownames(vis) <- rowData(vis)$symbol
+rownames(vis) <- rowData(vis)$Symbol
 
 vis
 
